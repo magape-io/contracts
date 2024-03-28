@@ -12,23 +12,12 @@ import "../Vote/VoteTypes.sol";
 // import {Market} from "../Market/Market.sol";
 
 contract Deployer is Hashes {
-    /***
-    LIVE: Uncomment
-    ***/
-    // constructor(address adr, address ad2, address ad3) { // owner, signer, game
-
-    /***
-    EASE OF DEPLOYMENT
-    LIVE: REMOVE START
-    ***/
-    constructor() {
-        address adr;
-        address ad2;
-        address ad3;
-        adr = ad2 = ad3 = msg.sender;
-        /***
-        LIVE: REMOVE END
-        ***/
+    constructor(
+        address adr,
+        address ad2,
+        address ad3
+    ) {
+        // owner, signer, game
 
         (
             Upgrade mac,
@@ -58,7 +47,10 @@ contract Deployer is Hashes {
             // sstore(0x05, mkt)
 
             // MAC(address(mac)).mint();
-            mstore(0x80, 0x40c10f1900000000000000000000000000000000000000000000000000000000)
+            mstore(
+                0x80,
+                0x40c10f1900000000000000000000000000000000000000000000000000000000
+            )
             mstore(0x84, nod)
             mstore(0xa4, 0x5955e3bb3e743fec00000)
             pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mint(nod, 6.75m)
@@ -70,7 +62,10 @@ contract Deployer is Hashes {
             pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mint(mag, 2m)
 
             // Upgrade(mag).mem(APP, adr);
-            mstore(0x80, 0xb88bab2900000000000000000000000000000000000000000000000000000000)
+            mstore(
+                0x80,
+                0xb88bab2900000000000000000000000000000000000000000000000000000000
+            )
 
             // Upgrade(mag).mem(APP, ad2);
             mstore(0x84, APP)
@@ -83,7 +78,10 @@ contract Deployer is Hashes {
             mstore(0xa4, 0x59)
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri1 = len
             mstore(0x84, add(ER4, 0x01))
-            mstore(0xa4, 0x68747470733a2f2f776879696e6469616e2e64646e732e6e65742f69706e732f)
+            mstore(
+                0xa4,
+                0x68747470733a2f2f776879696e6469616e2e64646e732e6e65742f69706e732f
+            )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri2 = str2
             mstore(0x84, add(ER4, 0x02))
             mstore(
@@ -139,19 +137,16 @@ contract Deployer is Hashes {
             // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.MAG = nod
 
             // Upgrade(mkt).mem(TFM, 0.5%);
-            mstore(0x84, TFM)
-            mstore(0xa4, 0x32)
+            // mstore(0x84, TFM)
+            // mstore(0xa4, 0x32)
             // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.fee = 50 (0.5%)
 
             // Upgrade(mag).mem(ER5, 0x0c);
             mstore(0x84, ER5)
             mstore(0xa4, 0x4563918244f40000)
             pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.tkn = 5e18
-            /***
-            LIVE: set to 10
-            ***/
             mstore(0xa4, 0x01)
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.totalNodes = 10
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.totalNodes = 1
             // mstore(0xa4, 0x3635c9adc5dea00000)
             // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.nonVoteVol = 1000e18
 
@@ -159,7 +154,7 @@ contract Deployer is Hashes {
             mstore(0x84, ER3)
             mstore(0xa4, 0x01)
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.nodeAdjust = 1
-            
+
             // Upgrade(nod).mem(vo_, ad_);
             mstore(0x84, 0x01)
             mstore(0xa4, vo1)
@@ -191,8 +186,8 @@ contract Deployer is Hashes {
             address mag,
             address mac,
             address crc
-            // ,address mkt
         )
+    // ,address mkt
     {
         assembly {
             nod := sload(0x01)
