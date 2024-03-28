@@ -185,16 +185,15 @@ contract Deployer is Hashes {
             address nod,
             address mag,
             address mac,
-            address crc
+            address crc // ,address mkt
         )
-    // ,address mkt
     {
         assembly {
             nod := sload(0x01)
             mag := sload(0x02)
             mac := sload(0x03)
             crc := sload(0x04)
-            // mkt := sload(0x04)
+            // mkt := sload(0x05)
         }
     }
 }
