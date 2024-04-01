@@ -9,22 +9,17 @@ import {Hashes} from "../Util/Hashes.sol";
 import {CrossChain} from "../CrossChain/CrossChain.sol";
 import "../Vote/VoteTypes.sol";
 
-// import {Market} from "../Market/Market.sol";
-
 contract Deployer is Hashes {
     constructor(
         address adr,
         address ad2,
         address ad3
     ) {
-        // owner, signer, game
-
         (
             Upgrade mac,
             Upgrade mag,
             Upgrade nod,
             Upgrade crc,
-            // Upgrade mkt,
             GameAdd vo1,
             GameRemove vo2,
             WithdrawBulk vo3
@@ -33,7 +28,6 @@ contract Deployer is Hashes {
                 new Upgrade(address(new Magape())),
                 new Upgrade(address(new Node())),
                 new Upgrade(address(new CrossChain())),
-                // new Upgrade(address(new Market())),
                 new GameAdd(),
                 new GameRemove(),
                 new WithdrawBulk()
@@ -44,137 +38,92 @@ contract Deployer is Hashes {
             sstore(0x02, mag)
             sstore(0x03, mac)
             sstore(0x04, crc)
-            // sstore(0x05, mkt)
 
-            // MAC(address(mac)).mint();
             mstore(
                 0x80,
                 0x40c10f1900000000000000000000000000000000000000000000000000000000
             )
             mstore(0x84, nod)
             mstore(0xa4, 0x5955e3bb3e743fec00000)
-            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mint(nod, 6.75m)
+            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, adr)
             mstore(0xa4, 0x108b2a2c2802909400000)
-            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mint(adr, 1.25m)
+            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, mag)
             mstore(0xa4, 0x1a784379d99db42000000)
-            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mint(mag, 2m)
+            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00))
 
-            // Upgrade(mag).mem(APP, adr);
             mstore(
                 0x80,
                 0xb88bab2900000000000000000000000000000000000000000000000000000000
             )
 
-            // Upgrade(mag).mem(APP, ad2);
             mstore(0x84, APP)
             mstore(0xa4, ad2)
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.signer = ad2
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.signer = ad2
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
 
-            // Upgrade(mag).mem(ER4, str);
             mstore(0x84, ER4)
             mstore(0xa4, 0x59)
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri1 = len
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, add(ER4, 0x01))
             mstore(
                 0xa4,
                 0x68747470733a2f2f776879696e6469616e2e64646e732e6e65742f69706e732f
             )
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri2 = str2
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, add(ER4, 0x02))
             mstore(
                 0xa4,
-                // 0x6b326b3472386f6b6a6b7a667637366a6f397938636565656877343071376a6c // testnet
-                // 0x6b326b3472386e6c776e646c6d687577756b676863326f7a6373786c72776c73 // BSC
-                0x6b326b3472386a7064656e6869356932686b6461346c76393130303265316a64 // Sepolia
+                0x6b326b3472386a7064656e6869356932686b6461346c76393130303265316a64
             )
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri3 = str3
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, add(ER4, 0x03))
             mstore(
                 0xa4,
-                // 0x78696a66303268613973796e6e65363171326d7269626f702f00000000000000 // testnet
-                // 0x646a307077747965356935306f7972306b346b36776472382f00000000000000 // BSC
-                0x6e3668697277327871377364626d6878353264746e62716a2f00000000000000 // Sepolia
+                0x6e3668697277327871377364626d6878353264746e62716a2f00000000000000
             )
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri4 = str4
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
 
-            // Upgrade(nod).mem(adr << 5, true);
-            mstore(0x84, shl(0x05, ad3))
-            mstore(0xa4, 0x01)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // game[ad3] = true
-
-            /*** 
-            TO ADD MORE GAMES
-            LIVE: REMOVE START
-            ***/
-            mstore(0x84, shl(0x05, 0x4D11dF920E0E48c7E132e5a9754C7e754Cd6EBFB))
-            mstore(0xa4, 0x01)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // game[ad3] = true
-
-            mstore(0x84, shl(0x05, 0x40f0de13ff4454f2dc786e38504cf4efc2dd12ca))
-            mstore(0xa4, 0x01)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // game[ad3] = true
-            /***
-            LIVE: REMOVE END
-            ***/
-
-            // Upgrade(nod).mem(TTF, gg2);
             mstore(0x84, TTF)
             mstore(0xa4, mac)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.MAC = mac
-            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.MAC = mac
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.MAC = mac
-            // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.MAC = mac
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
+            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00))
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
 
-            // Upgrade(nod).mem(TP5, mag);
             mstore(0x84, TP5)
             mstore(0xa4, mag)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.MAG = mag
-            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.MAG = mag
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
+            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0xa4, nod)
-            // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.MAG = nod
 
-            // Upgrade(mkt).mem(TFM, 0.5%);
-            // mstore(0x84, TFM)
-            // mstore(0xa4, 0x32)
-            // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.fee = 50 (0.5%)
-
-            // Upgrade(mag).mem(ER5, 0x0c);
             mstore(0x84, ER5)
             mstore(0xa4, 0x4563918244f40000)
-            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.tkn = 5e18
+            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0xa4, 0x01)
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.totalNodes = 1
-            // mstore(0xa4, 0x3635c9adc5dea00000)
-            // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.nonVoteVol = 1000e18
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
 
-            // Upgrade(mag).mem(ER3, 0x01)
             mstore(0x84, ER3)
             mstore(0xa4, 0x01)
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.nodeAdjust = 1
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
 
-            // Upgrade(nod).mem(vo_, ad_);
             mstore(0x84, 0x01)
             mstore(0xa4, vo1)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.voteTypes[1] = vo1
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, 0x02)
             mstore(0xa4, vo2)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.voteTypes[2] = vo2
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, 0x03)
             mstore(0xa4, vo3)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.voteTypes[3] = vo3
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
 
-            // Upgrade(mac).mem(OWO, adr);
             mstore(0x84, OWO)
             mstore(0xa4, adr)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.owner = adr
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0xa4, nod)
-            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mac.owner = nod
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.owner = nod
-            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.owner = nod
-            // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.owner = nod
+            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00))
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
+            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00))
         }
     }
 
@@ -185,7 +134,7 @@ contract Deployer is Hashes {
             address nod,
             address mag,
             address mac,
-            address crc // ,address mkt
+            address crc
         )
     {
         assembly {
@@ -193,7 +142,6 @@ contract Deployer is Hashes {
             mag := sload(0x02)
             mac := sload(0x03)
             crc := sload(0x04)
-            // mkt := sload(0x05)
         }
     }
 }
