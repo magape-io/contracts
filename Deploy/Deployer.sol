@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: None
+ // SPDX-License-Identifier: None
 pragma solidity 0.8.0;
 
 import {MAC} from "../GameAsset/MAC.sol";
@@ -10,11 +10,7 @@ import {CrossChain} from "../CrossChain/CrossChain.sol";
 import "../Vote/VoteTypes.sol";
 
 contract Deployer is Hashes {
-    constructor(
-        address adr,
-        address ad2,
-        address ad3
-    ) {
+    constructor(address adr, address ad2) {
         (
             Upgrade mac,
             Upgrade mag,
@@ -64,24 +60,24 @@ contract Deployer is Hashes {
             pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
 
             mstore(0x84, ER4)
-            mstore(0xa4, 0x59)
+            mstore(0xa4, 0x54)
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, add(ER4, 0x01))
             mstore(
                 0xa4,
-                0x68747470733a2f2f776879696e6469616e2e64646e732e6e65742f69706e732f
+                0x68747470733a2f2f6170692e6d61676170652e696f2f69706e732f6b326b3472
             )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, add(ER4, 0x02))
             mstore(
                 0xa4,
-                0x6b326b3472386a7064656e6869356932686b6461346c76393130303265316a64
+                0x386e35613576746677783661387775773166763634736f3033366b34667a7672
             )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
             mstore(0x84, add(ER4, 0x03))
             mstore(
                 0xa4,
-                0x6e3668697277327871377364626d6878353264746e62716a2f00000000000000
+                0x6e6d7474376f6572697061737879707a6f6e322f000000000000000000000000
             )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
 
