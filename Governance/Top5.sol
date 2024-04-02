@@ -6,11 +6,11 @@ import {Hashes} from "../Util/Hashes.sol";
 contract Top5 is Hashes {
     function isTop5(address adr) external view returns (bool bol, uint256 nod) {
         assembly {
-            // 索子节点
+            // get child node
             mstore(0x00, adr)
             nod := sload(add(keccak256(0x00, 0x20), 0x01))
 
-            // 相应内存
+            // pointer
             mstore(0x00, TP5)
             mstore(0x20, nod)
             let tmp := keccak256(0x00, 0x40)
@@ -20,7 +20,7 @@ contract Top5 is Hashes {
             } lt(i, 0x05) {
                 i := add(i, 0x01)
             } {
-                // 在榜?
+                // is top 5?
                 if eq(adr, sload(add(tmp, i))) {
                     bol := 0x01
                     break
@@ -41,12 +41,12 @@ contract Top5 is Hashes {
         )
     {
         assembly {
-            // 相应内存
+            // pointer
             mstore(0x00, TP5)
             mstore(0x20, nod)
             let tmp := keccak256(0x00, 0x40)
 
-            // 手动比循环便宜
+            // manual is cheaper than loop
             mstore(0x80, sload(tmp))
             mstore(0xa0, sload(add(tmp, 0x01)))
             mstore(0xc0, sload(add(tmp, 0x02)))
@@ -76,7 +76,7 @@ contract Top5 is Hashes {
                 sstore(num, add(sload(num), 0x01))
             }
 
-            // 相应内存
+            // pointer
             mstore(0x00, TP5)
             mstore(0x20, nod)
             tmp := keccak256(0x00, 0x40)
@@ -88,14 +88,14 @@ contract Top5 is Hashes {
             } lt(i, 0x05) {
                 i := add(i, 0x01)
             } {
-                // 找前5最小
+                // get smallest
                 let adr := sload(add(tmp, i))
-                // 已上榜
+                // is top 5?
                 if eq(adr, top) {
                     return(0x00, 0x00)
                 }
                 mstore(0x00, adr)
-                // 查balanceOf()
+                // balanceOf()
                 ptr := sload(add(keccak256(0x00, 0x20), 0x02))
                 if lt(ptr, lwt) {
                     ind := i

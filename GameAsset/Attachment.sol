@@ -49,7 +49,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         _setTop5(msg.sender);
     }
 
-    // normal minting
+    // paid minting
     function mint(
         uint256 amt,
         uint256 len,
