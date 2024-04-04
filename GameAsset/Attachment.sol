@@ -19,8 +19,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
             sstore(tmp, add(sload(tmp), 0x01))
 
             mstore(0x00, tid) // ownerOf[tid] = msg.sender
-            tmp := keccak256(0x00, 0x20)
-            sstore(tmp, adr)
+            sstore(keccak256(0x00, 0x20), adr)
 
             log4(0x00, 0x00, ETF, 0x00, adr, tid) // emit Transfer()
         }
@@ -91,7 +90,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
             }
 
             sstore(ptr, 0x00) // ownerOf[id] = toa
-            sstore(add(ptr, 0x03), 0x00) // approve[tid] = toa
+            sstore(add(ptr, 0x01), 0x00) // approve[tid] = toa
 
             mstore(0x00, frm) // --balanceOf(msg.sender)
             let tmp := keccak256(0x00, 0x20)
