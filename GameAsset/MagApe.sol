@@ -3,7 +3,7 @@ pragma solidity 0.8.0;
 
 import {Attachment} from "../GameAsset/Attachment.sol";
 
-contract Magape is Attachment {
+contract MagApe is Attachment {
     event Transfer(address indexed, address indexed, uint256 indexed);
     event Approval(address indexed, address indexed, uint256 indexed);
     event ApprovalForAll(address indexed, address indexed, bool);
@@ -18,7 +18,7 @@ contract Magape is Attachment {
         assembly {
             mstore(0x80, 0x20)
             mstore(0xa0, 0x06)
-            mstore(0xc0, "Magape")
+            mstore(0xc0, "MagApe")
             return(0x80, 0x60)
         }
     }
@@ -27,7 +27,7 @@ contract Magape is Attachment {
         assembly {
             mstore(0x80, 0x20)
             mstore(0xa0, 0x06)
-            mstore(0xc0, "Magape")
+            mstore(0xc0, "MagApe")
             return(0x80, 0x60)
         }
     }
