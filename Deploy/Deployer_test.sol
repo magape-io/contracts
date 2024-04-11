@@ -2,7 +2,7 @@
 pragma solidity 0.8.0;
 
 import {MAC} from "../GameAsset/MAC.sol";
-import {Magape} from "../GameAsset/Magape.sol";
+import {MagApe} from "../GameAsset/MagApe.sol";
 import {Node} from "../Governance/Node.sol";
 import {Upgrade} from "../Deploy/Upgrade.sol";
 import {Hashes} from "../Util/Hashes.sol";
@@ -29,7 +29,7 @@ contract Deployer is Hashes {
             WithdrawBulk vo3
         ) = (
                 new Upgrade(address(new MAC())),
-                new Upgrade(address(new Magape())),
+                new Upgrade(address(new MagApe())),
                 new Upgrade(address(new Node())),
                 new Upgrade(address(new CrossChain())),
                 // new Upgrade(address(new Market())),
