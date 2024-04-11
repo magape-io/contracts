@@ -60,7 +60,6 @@ contract MagApe is Attachment {
                 byt := 0x3000000000000000000000000000000000000000000000000000000000000000
                 len := 0x01
             }
-
             for {
 
             } gt(tid, 0x00) {
@@ -110,7 +109,11 @@ contract MagApe is Attachment {
         }
     }
 
-    function isApprovedForAll(address frm, address toa) external view returns (bool bol) {
+    function isApprovedForAll(address frm, address toa)
+        external
+        view
+        returns (bool bol)
+    {
         assembly {
             mstore(0x00, frm)
             mstore(0x20, toa)
@@ -168,7 +171,10 @@ contract MagApe is Attachment {
             let app := add(ptr, 0x01)
 
             // require(getApproved(tid) == toa || ownerOf(tid) == msg.sender || isApprovedForAll(msg.sender))
-            if and(and(iszero(eq(sload(app), toa)), iszero(eq(frm, caller()))), eq(tmp, 0x00)) {
+            if and(
+                and(iszero(eq(sload(app), toa)), iszero(eq(frm, caller()))),
+                eq(tmp, 0x00)
+            ) {
                 mstore(0x80, ERR)
                 mstore(0xa0, STR)
                 mstore(0xc0, ER2)
