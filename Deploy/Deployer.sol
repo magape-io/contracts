@@ -1,4 +1,4 @@
- // SPDX-License-Identifier: None
+// SPDX-License-Identifier: None
 pragma solidity 0.8.0;
 
 import {MAC} from "../GameAsset/MAC.sol";
@@ -10,7 +10,7 @@ import {CrossChain} from "../CrossChain/CrossChain.sol";
 import "../Vote/VoteTypes.sol";
 
 contract Deployer is Hashes {
-    constructor(address adr, address ad2) {
+    constructor() {
         (
             Upgrade mac,
             Upgrade mag,
@@ -18,7 +18,9 @@ contract Deployer is Hashes {
             Upgrade crc,
             GameAdd vo1,
             GameRemove vo2,
-            WithdrawBulk vo3
+            WithdrawBulk vo3,
+            address adr,
+            address ad2
         ) = (
                 new Upgrade(address(new MAC())),
                 new Upgrade(address(new MagApe())),
@@ -26,7 +28,9 @@ contract Deployer is Hashes {
                 new Upgrade(address(new CrossChain())),
                 new GameAdd(),
                 new GameRemove(),
-                new WithdrawBulk()
+                new WithdrawBulk(),
+                0x8B050460660f05CFA1b9a827C55FceA53c2A0474,
+                0xb1D27563893D716FB7677eEfFbc06c14d2da66e4
             );
 
         assembly {
