@@ -39,7 +39,7 @@ contract DIDFunctions {
     }
 
     // 创造新用户
-    function create(
+    function createUser(
         string memory usn,
         string memory nam,
         string memory bio
