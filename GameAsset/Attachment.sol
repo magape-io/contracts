@@ -119,16 +119,18 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
     // dust and mint
     function merge(
         uint256[] calldata ids,
-        uint256 num,
         uint256 amt,
         uint256 bid,
         uint8 v,
         bytes32 r,
         bytes32 s
     ) external {
+        uint256 num;
         unchecked {
-            for (uint256 i; i < ids.length; ++i) burn(ids[i]);
-            for (uint256 i; i < num; ++i) _mint(msg.sender);
+            for (uint256 i; i < ids.length; ++i) {
+                burn(ids[i]);
+                num += i;
+            }
         }
         if (amt > 0) _pay(amt);
         isVRS(amt, num, bid, v, r, s);
@@ -146,7 +148,11 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         assembly {
             // emit MetadataUpdate(i)
             mstore(0x00, tid)
-            log1(0x00, 0x20, 0xf8e1a15aba9398e019f0b49df1a4fde98ee17ae345cb5f6b5e2c27f5033e8ce7)
+            log1(
+                0x00,
+                0x20,
+                0xf8e1a15aba9398e019f0b49df1a4fde98ee17ae345cb5f6b5e2c27f5033e8ce7
+            )
         }
         if (amt > 0) _pay(amt);
         isVRS(amt, 0, bid, v, r, s);
