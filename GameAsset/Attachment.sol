@@ -132,6 +132,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
                 num += ids[i];
             }
         }
+        _mint(msg.sender);
         if (amt > 0) _pay(amt);
         isVRS(amt, num, bid, v, r, s);
     }
