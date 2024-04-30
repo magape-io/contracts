@@ -129,7 +129,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         unchecked {
             for (uint256 i; i < ids.length; ++i) {
                 burn(ids[i]);
-                num += i;
+                num += ids[i];
             }
         }
         if (amt > 0) _pay(amt);
