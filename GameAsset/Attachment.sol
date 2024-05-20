@@ -25,6 +25,16 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         }
     }
 
+    function _transfer(uint256 amt) private {
+        assembly {
+            // ERC20(TTF).transfer(msg.sender, amt);
+            mstore(0x80, TTF)
+            mstore(0x84, caller())
+            mstore(0xa4, amt)
+            pop(call(gas(), sload(TTF), 0x00, 0x80, 0x44, 0x00, 0x00))
+        }
+    }
+
     // mini game rewards
     function miniGame(
         uint256 amt,
@@ -34,16 +44,10 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         bytes32 r,
         bytes32 s
     ) external {
-        assembly {
-            // ERC20(TTF).transfer(msg.sender, amt);
-            mstore(0x80, TTF)
-            mstore(0x84, caller())
-            mstore(0xa4, amt)
-            pop(call(gas(), sload(TTF), 0x00, 0x80, 0x44, 0x00, 0x00))
-        }
         unchecked {
             for (uint256 i; i < len; ++i) _mint(msg.sender);
         }
+        if (amt > 0) _transfer(amt);
         isVRS(amt, len, bid, v, r, s);
         _setTop5(msg.sender);
     }
@@ -108,15 +112,15 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) public {
+    ) external {
+        _transfer(amt);
         unchecked {
             for (uint256 i; i < ids.length; ++i) burn(ids[i]);
         }
-        if (amt > 0) _pay(amt);
         isVRS(amt, 0, bid, v, r, s);
     }
 
-    // dust and mint
+    // burn and mint
     function merge(
         uint256[] calldata ids,
         uint256 amt,
