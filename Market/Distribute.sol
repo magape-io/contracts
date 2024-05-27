@@ -26,13 +26,7 @@ contract Distribute is Hashes {
             mstore(0x80, TTF)
             mstore(0x84, sload(OWO))
             mstore(0xa4, fee)
-            // pop(call(gas(), tkn, 0x00, 0x80, 0x44, 0x00, 0x00))
-            if iszero(call(gas(), tkn, 0x00, 0x80, 0x44, 0x00, 0x00)) {
-                mstore(0x80, ERR)
-                mstore(0xa0, STR)
-                mstore(0xc0, ER5)
-                revert(0x80, 0x64)
-            }
+            let nul := call(gas(), tkn, 0x00, 0x80, 0x44, 0x00, 0x00)
 
             let rcp := sload(tkn)
 
@@ -42,17 +36,17 @@ contract Distribute is Hashes {
             // Upgrade.sol mem(token_address, receiver_address)
             mstore(0x84, rcp)
             mstore(0xa4, sub(amt, fee))
-            // pop(call(gas(), tkn, 0x00, 0x80, 0x44, 0x00, 0x00))
-            if iszero(call(gas(), tkn, 0x00, 0x80, 0x44, 0x00, 0x00)) {
-                mstore(0x80, ERR)
-                mstore(0xa0, STR)
-                mstore(0xc0, ER5)
-                revert(0x80, 0x64)
-            }
+            nul := call(gas(), tkn, 0x00, 0x80, 0x44, 0x00, 0x00)
 
             // emit Distri(msg.sender, rcp, amt);
             mstore(0x00, amt)
-            log3(0x00, 0x20, 0x48599caf6bd08d44be14a04a307db8fab0c637666a2bd52a8e6b2688ffa849ec, caller(), rcp)
+            log3(
+                0x00,
+                0x20,
+                0x48599caf6bd08d44be14a04a307db8fab0c637666a2bd52a8e6b2688ffa849ec,
+                caller(),
+                rcp
+            )
         }
     }
 }
