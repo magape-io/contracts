@@ -151,7 +151,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         bytes32 s
     ) external {
         assembly {
-            // emit MetadataUpdate(i)
+            // emit MetadataUpdate(tid)
             mstore(0x00, tid)
             log1(
                 0x00,

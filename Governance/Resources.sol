@@ -32,6 +32,9 @@ contract Resources is Hashes, ECDSA {
         _transferFrom(amt);
     }
 
+    /*
+    This function will be obsolete in MagApe 2.0
+    */
     function resourceIn(address adr, uint256 amt) external {
         assembly {
             // require(games[adr].stt);
