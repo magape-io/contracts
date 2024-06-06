@@ -100,6 +100,9 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
             let tmp := keccak256(0x00, 0x20)
             sstore(tmp, sub(sload(tmp), 0x01))
 
+            tmp := sub(sload(INF), 0x01) // --count
+            sstore(INF, tmp)
+
             log4(0x00, 0x00, ETF, frm, 0x00, tid) // emit Transfer()
         }
     }
