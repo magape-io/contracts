@@ -20,13 +20,15 @@ library Funcs {
             uint256 len;
             for (uint256 i = a; i > 0; i /= 256) ++len;
             b = new bytes(len);
-            for (uint256 i; i < len; ++i) b[len - i - 1] = bytes1(uint8(a / (2**(8 * i))));
+            for (uint256 i; i < len; ++i)
+                b[len - i - 1] = bytes1(uint8(a / (2**(8 * i))));
         }
     }
 
     function conHex2Dec(bytes memory a) external pure returns (uint256 b) {
         unchecked {
-            for (uint256 i; i < a.length; ++i) b += uint256(uint8(a[i])) * (2**(8 * (a.length - i - 1)));
+            for (uint256 i; i < a.length; ++i)
+                b += uint256(uint8(a[i])) * (2**(8 * (a.length - i - 1)));
         }
     }
 
@@ -84,9 +86,24 @@ library Funcs {
         b = bytes4(keccak256(abi.encodePacked(a)));
     }
 
-    function getConAdr(bytes memory a, uint256 b) external view returns (address c) {
+    function getConAdr(bytes memory a, uint256 b)
+        external
+        view
+        returns (address c)
+    {
         c = address(
-            uint160(uint256(keccak256(abi.encodePacked(bytes1(0xff), address(this), b, keccak256(a)))))
+            uint160(
+                uint256(
+                    keccak256(
+                        abi.encodePacked(
+                            bytes1(0xff),
+                            address(this),
+                            b,
+                            keccak256(a)
+                        )
+                    )
+                )
+            )
         );
     }
 
@@ -103,7 +120,11 @@ library Funcs {
         a = ecrecover(h, v, r, s);
     }
 
-    function getECRvsr(bytes32 h, bytes memory c) external pure returns (address a) {
+    function getECRvsr(bytes32 h, bytes memory c)
+        external
+        pure
+        returns (address a)
+    {
         uint8 v;
         bytes32 r;
         bytes32 s;
@@ -113,6 +134,16 @@ library Funcs {
             v := byte(0, mload(add(c, 0x60)))
         }
         a = ecrecover(h, v, r, s);
+    }
+
+    function getBitwiseShift(uint256 pos, address adr)
+        external
+        pure
+        returns (bytes32 a)
+    {
+        assembly {
+            a := shl(pos, adr)
+        }
     }
 
     function getStrLen(string memory a) external pure returns (uint256 b) {

@@ -19,10 +19,19 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
             sstore(tmp, add(sload(tmp), 0x01))
 
             mstore(0x00, tid) // ownerOf[tid] = msg.sender
-            tmp := keccak256(0x00, 0x20)
-            sstore(tmp, adr)
+            sstore(keccak256(0x00, 0x20), adr)
 
             log4(0x00, 0x00, ETF, 0x00, adr, tid) // emit Transfer()
+        }
+    }
+
+    function _transfer(uint256 amt) private {
+        assembly {
+            // ERC20(TTF).transfer(msg.sender, amt);
+            mstore(0x80, TTF)
+            mstore(0x84, caller())
+            mstore(0xa4, amt)
+            amt := call(gas(), sload(TTF), 0x00, 0x80, 0x44, 0x00, 0x00)
         }
     }
 
@@ -35,16 +44,10 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         bytes32 r,
         bytes32 s
     ) external {
-        assembly {
-            // ERC20(TTF).transfer(msg.sender, amt);
-            mstore(0x80, TTF)
-            mstore(0x84, caller())
-            mstore(0xa4, amt)
-            pop(call(gas(), sload(TTF), 0x00, 0x80, 0x44, 0x00, 0x00))
-        }
         unchecked {
             for (uint256 i; i < len; ++i) _mint(msg.sender);
         }
+        if (amt > 0) _transfer(amt);
         isVRS(amt, len, bid, v, r, s);
         _setTop5(msg.sender);
     }
@@ -91,11 +94,14 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
             }
 
             sstore(ptr, 0x00) // ownerOf[id] = toa
-            sstore(add(ptr, 0x03), 0x00) // approve[tid] = toa
+            sstore(add(ptr, 0x01), 0x00) // approve[tid] = toa
 
             mstore(0x00, frm) // --balanceOf(msg.sender)
             let tmp := keccak256(0x00, 0x20)
             sstore(tmp, sub(sload(tmp), 0x01))
+
+            tmp := sub(sload(INF), 0x01) // --count
+            sstore(INF, tmp)
 
             log4(0x00, 0x00, ETF, frm, 0x00, tid) // emit Transfer()
         }
@@ -109,28 +115,31 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) public {
+    ) external {
+        _transfer(amt);
         unchecked {
             for (uint256 i; i < ids.length; ++i) burn(ids[i]);
         }
-        if (amt > 0) _pay(amt);
         isVRS(amt, 0, bid, v, r, s);
     }
 
-    // dust and mint
+    // burn and mint
     function merge(
         uint256[] calldata ids,
-        uint256 num,
         uint256 amt,
         uint256 bid,
         uint8 v,
         bytes32 r,
         bytes32 s
     ) external {
+        uint256 num;
         unchecked {
-            for (uint256 i; i < ids.length; ++i) burn(ids[i]);
-            for (uint256 i; i < num; ++i) _mint(msg.sender);
+            for (uint256 i; i < ids.length; ++i) {
+                burn(ids[i]);
+                num += ids[i];
+            }
         }
+        _mint(msg.sender);
         if (amt > 0) _pay(amt);
         isVRS(amt, num, bid, v, r, s);
     }
@@ -145,9 +154,13 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         bytes32 s
     ) external {
         assembly {
-            // emit MetadataUpdate(i)
+            // emit MetadataUpdate(tid)
             mstore(0x00, tid)
-            log1(0x00, 0x20, 0xf8e1a15aba9398e019f0b49df1a4fde98ee17ae345cb5f6b5e2c27f5033e8ce7)
+            log1(
+                0x00,
+                0x20,
+                0xf8e1a15aba9398e019f0b49df1a4fde98ee17ae345cb5f6b5e2c27f5033e8ce7
+            )
         }
         if (amt > 0) _pay(amt);
         isVRS(amt, 0, bid, v, r, s);

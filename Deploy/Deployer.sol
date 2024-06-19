@@ -1,8 +1,8 @@
- // SPDX-License-Identifier: None
+// SPDX-License-Identifier: None
 pragma solidity 0.8.0;
 
 import {MAC} from "../GameAsset/MAC.sol";
-import {Magape} from "../GameAsset/Magape.sol";
+import {MagApe} from "../GameAsset/MagApe.sol";
 import {Node} from "../Governance/Node.sol";
 import {Upgrade} from "../Deploy/Upgrade.sol";
 import {Hashes} from "../Util/Hashes.sol";
@@ -10,7 +10,7 @@ import {CrossChain} from "../CrossChain/CrossChain.sol";
 import "../Vote/VoteTypes.sol";
 
 contract Deployer is Hashes {
-    constructor(address adr, address ad2) {
+    constructor() {
         (
             Upgrade mac,
             Upgrade mag,
@@ -18,15 +18,19 @@ contract Deployer is Hashes {
             Upgrade crc,
             GameAdd vo1,
             GameRemove vo2,
-            WithdrawBulk vo3
+            WithdrawBulk vo3,
+            address adr,
+            address ad2
         ) = (
                 new Upgrade(address(new MAC())),
-                new Upgrade(address(new Magape())),
+                new Upgrade(address(new MagApe())),
                 new Upgrade(address(new Node())),
                 new Upgrade(address(new CrossChain())),
                 new GameAdd(),
                 new GameRemove(),
-                new WithdrawBulk()
+                new WithdrawBulk(),
+                0x8B050460660f05CFA1b9a827C55FceA53c2A0474,
+                0xb1D27563893D716FB7677eEfFbc06c14d2da66e4
             );
 
         assembly {
@@ -116,7 +120,6 @@ contract Deployer is Hashes {
             mstore(0x84, OWO)
             mstore(0xa4, adr)
             pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00))
-            mstore(0xa4, nod)
             pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00))
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00))
             pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00))

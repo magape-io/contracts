@@ -3,7 +3,7 @@ pragma solidity 0.8.0;
 
 import {Attachment} from "../GameAsset/Attachment.sol";
 
-contract Magape is Attachment {
+contract MagApe is Attachment {
     event Transfer(address indexed, address indexed, uint256 indexed);
     event Approval(address indexed, address indexed, uint256 indexed);
     event ApprovalForAll(address indexed, address indexed, bool);
@@ -18,7 +18,7 @@ contract Magape is Attachment {
         assembly {
             mstore(0x80, 0x20)
             mstore(0xa0, 0x06)
-            mstore(0xc0, "Magape")
+            mstore(0xc0, "MagApe")
             return(0x80, 0x60)
         }
     }
@@ -27,7 +27,7 @@ contract Magape is Attachment {
         assembly {
             mstore(0x80, 0x20)
             mstore(0xa0, 0x06)
-            mstore(0xc0, "Magape")
+            mstore(0xc0, "MagApe")
             return(0x80, 0x60)
         }
     }
@@ -60,7 +60,6 @@ contract Magape is Attachment {
                 byt := 0x3000000000000000000000000000000000000000000000000000000000000000
                 len := 0x01
             }
-
             for {
 
             } gt(tid, 0x00) {
@@ -110,7 +109,11 @@ contract Magape is Attachment {
         }
     }
 
-    function isApprovedForAll(address frm, address toa) external view returns (bool bol) {
+    function isApprovedForAll(address frm, address toa)
+        external
+        view
+        returns (bool bol)
+    {
         assembly {
             mstore(0x00, frm)
             mstore(0x20, toa)
@@ -168,7 +171,10 @@ contract Magape is Attachment {
             let app := add(ptr, 0x01)
 
             // require(getApproved(tid) == toa || ownerOf(tid) == msg.sender || isApprovedForAll(msg.sender))
-            if and(and(iszero(eq(sload(app), toa)), iszero(eq(frm, caller()))), eq(tmp, 0x00)) {
+            if and(
+                and(iszero(eq(sload(app), toa)), iszero(eq(frm, caller()))),
+                eq(tmp, 0x00)
+            ) {
                 mstore(0x80, ERR)
                 mstore(0xa0, STR)
                 mstore(0xc0, ER2)

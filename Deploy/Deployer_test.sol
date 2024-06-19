@@ -2,7 +2,7 @@
 pragma solidity 0.8.0;
 
 import {MAC} from "../GameAsset/MAC.sol";
-import {Magape} from "../GameAsset/Magape.sol";
+import {MagApe} from "../GameAsset/MagApe.sol";
 import {Node} from "../Governance/Node.sol";
 import {Upgrade} from "../Deploy/Upgrade.sol";
 import {Hashes} from "../Util/Hashes.sol";
@@ -29,7 +29,7 @@ contract Deployer is Hashes {
             WithdrawBulk vo3
         ) = (
                 new Upgrade(address(new MAC())),
-                new Upgrade(address(new Magape())),
+                new Upgrade(address(new MagApe())),
                 new Upgrade(address(new Node())),
                 new Upgrade(address(new CrossChain())),
                 // new Upgrade(address(new Market())),
@@ -79,23 +79,27 @@ contract Deployer is Hashes {
             mstore(0x84, add(ER4, 0x01))
             mstore(
                 0xa4,
-                0x68747470733a2f2f776879696e6469616e2e64646e732e6e65742f69706e732f
+                0x68747470733a2f2f6170692e6d61676170652e696f2f69706e732f6b326b3472 // testnets
+                // 0x68747470733a2f2f6170692e6d61676170652e696f2f69706e732f6b326b3472 // mainnet test
+
             )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri2 = str2
             mstore(0x84, add(ER4, 0x02))
             mstore(
                 0xa4,
-                // 0x6b326b3472386f6b6a6b7a667637366a6f397938636565656877343071376a6c // testnet
-                // 0x6b326b3472386e6c776e646c6d687577756b676863326f7a6373786c72776c73 // BSC
-                0x6b326b3472386a7064656e6869356932686b6461346c76393130303265316a64 // Sepolia
+                0x6b326b3472386f6b6a6b7a667637366a6f397938636565656877343071376a6c // testnet
+                // 0x6b326b3472386e6c776e646c6d687577756b676863326f7a6373786c72776c73 // BSC test
+                // 0x386e32333875676867366d387867743977667a666465783238316a3466797973 // Sepolia
+                // 0x38703330306972786c7467666e657830316533697664626232386f396a766f72 // mainnet test
             )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri3 = str3
             mstore(0x84, add(ER4, 0x03))
             mstore(
                 0xa4,
-                // 0x78696a66303268613973796e6e65363171326d7269626f702f00000000000000 // testnet
-                // 0x646a307077747965356935306f7972306b346b36776472382f00000000000000 // BSC
-                0x6e3668697277327871377364626d6878353264746e62716a2f00000000000000 // Sepolia
+                0x78696a66303268613973796e6e65363171326d7269626f702f00000000000000 // testnet
+                // 0x646a307077747965356935306f7972306b346b36776472382f00000000000000 // BSC test
+                // 0x79697a7863726b77396e7530677737706963672f000000000000000000000000 // Sepolia
+                // 0x7a376e31343831377572386f67366c3830706b2f000000000000000000000000 // mainnet test
             )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri4 = str4
 
@@ -169,11 +173,10 @@ contract Deployer is Hashes {
             mstore(0x84, OWO)
             mstore(0xa4, adr)
             pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.owner = adr
-            mstore(0xa4, nod)
-            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mac.owner = nod
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.owner = nod
-            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.owner = nod
-            // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.owner = nod
+            pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mac.owner = adr
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.owner = adr
+            pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.owner = adr
+            // pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.owner = adr
         }
     }
 
