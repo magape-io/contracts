@@ -14,9 +14,9 @@ contract P2P is GameActive {
         address gam,
         uint256 amt,
         uint256 bid
-    ) external gameActive(gam) {
+    ) external {
         // 是否被投进或有充值
-
+        gameActive(gam);
         assembly {
             /* 
             存在问题：触发事件只可以 P2PBuy 或 Transfer

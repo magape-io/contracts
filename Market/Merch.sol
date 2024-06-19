@@ -17,7 +17,8 @@ contract Merch is GameActive {
         uint256 mer,
         uint256 amt,
         uint256 qty
-    ) external gameActive(msg.sender) returns (uint256 cnt) {
+    ) external returns (uint256 cnt) {
+        gameActive(msg.sender);
         assembly {
             // if (mer == 0) cnt = ++COUNT;
             switch mer

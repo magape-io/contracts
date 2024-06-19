@@ -4,7 +4,7 @@ pragma solidity 0.8.0;
 import {Hashes} from "../Util/Hashes.sol";
 
 contract GameActive is Hashes {
-    modifier gameActive(address adr) {
+    function gameActive(address adr) internal view {
         assembly {
             // (bool isActive, uint256 amtPool) = Node(adr).games(mer);
             mstore(
@@ -21,6 +21,5 @@ contract GameActive is Hashes {
                 revert(0x80, 0x64)
             }
         }
-        _;
     }
 }
