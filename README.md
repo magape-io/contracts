@@ -55,7 +55,7 @@
   "Node"               : "0xd73d9339b38c462cC41DB4548f67Dd6774326866",
   "Cross Chain"        : "0xa56920B698261c4b78F9fE9F1C09DAc266521E15",
   "Arena"              : "0x40b47Bc727B8472ff96e88c394ad1dADAdBA0fe8",
-  "Marketplace"        : "0xAc961390553EA766A5b341197B78bB101F76AbC9",
+  "Marketplace"        : "0x1698619434180C1561cfe94cDB124F4cBE86F8be",
   "Deployer"           : "0xd18677e59a391Df7BdcDA3A450f6E5Fec68dbBC0"
 }
 ```
@@ -66,7 +66,7 @@
 | Node | http://testnet-api.magape.io:81/contracts/0xd73d9339b38c462cC41DB4548f67Dd6774326866 |
 | Cross Chain | http://testnet-api.magape.io:81/contracts/0xa56920B698261c4b78F9fE9F1C09DAc266521E15 |
 | Arena | http://testnet-api.magape.io:81/contracts/0x40b47Bc727B8472ff96e88c394ad1dADAdBA0fe8 |
-| Marketplace | http://testnet-api.magape.io:81/contracts/0xAc961390553EA766A5b341197B78bB101F76AbC9 |
+| Marketplace | http://testnet-api.magape.io:81/contracts/0x1698619434180C1561cfe94cDB124F4cBE86F8be |
 | Deployer | http://testnet-api.magape.io:81/contracts/0xd18677e59a391Df7BdcDA3A450f6E5Fec68dbBC0 |
 
 

@@ -27,8 +27,8 @@ contract Market is Hashes {
                 0x80,
                 0x79131a1900000000000000000000000000000000000000000000000000000000
             )
-            mstore(0x84, sload(ER5))
-            pop(staticcall(gas(), sload(TP5), 0x80, 0x84, 0x00, 0x40))
+            mstore(0x84, gam)
+            pop(staticcall(gas(), sload(ER5), 0x80, 0x84, 0x00, 0x40))
             // require(isActive || amtPool >= MAC);
             if and(iszero(mload(0x00)), lt(mload(0x20), sload(ER5))) {
                 mstore(0x80, ERR)
