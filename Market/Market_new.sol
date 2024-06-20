@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: None
 pragma solidity 0.8.0;
 
-import {DynamicPrice} from "../Util/DynamicPrice.sol";
+import {Hashes} from "../Util/Hashes.sol";
 
-contract Market is DynamicPrice {
+contract Market is Hashes {
     // game, receiver, sender, bid, amt
     event Buy(
         address indexed,
@@ -12,27 +12,6 @@ contract Market is DynamicPrice {
         uint256,
         uint256
     );
-    bytes32 private constant EBU =
-        0xbab4aa6b2d5c0935e0e2937d1f73655848f670d43bf6f0c7e9e11e635bb5d86f;
-
-    function _buy(address adr, uint256 tid) private {
-        bytes32 tmp;
-
-        assembly {
-            log4(0x00, 0x00, EBU, caller(), adr, tid)
-
-            mstore(0x80, OWO) // Item(adr).ownerOf(tid)
-            mstore(0x84, tid)
-            pop(staticcall(gas(), adr, 0x80, 0x24, 0x00, 0x20))
-            let oid := mload(0x0)
-        }
-
-        _pay(tmp, adr, 0x05); // 转币给卖家减费用
-
-        assembly {
-            sstore(tmp, 0x00) // 下架 listData[adr][tid] = new List(address(0), 0)
-        }
-    }
 
     // bulk purchase
     function buy(
@@ -96,7 +75,14 @@ contract Market is DynamicPrice {
                     // emit Buy(gam, rc1, msg.sender, bi1, am1)
                     mstore(0x00, bi1)
                     mstore(0x20, am1)
-                    log4(0x00, 0x40, EBU, gam, caller(), rc1)
+                    log4(
+                        0x00,
+                        0x40,
+                        0xbab4aa6b2d5c0935e0e2937d1f73655848f670d43bf6f0c7e9e11e635bb5d86f,
+                        gam,
+                        caller(),
+                        rc1
+                    )
                 }
             }
         }
