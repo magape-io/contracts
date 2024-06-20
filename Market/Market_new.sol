@@ -22,15 +22,19 @@ contract Market is Hashes {
         uint256[] calldata amt
     ) external {
         assembly {
-            // require(game.votedIn == true || game.balance > 0)
-            if and(
-                iszero(sload(shl(0x05, gam))),
-                iszero(sload(shl(0x06, gam)))
-            ) {
+            // (bool isActive, uint256 amtPool) = Node(adr).games(mer);
+            mstore(
+                0x80,
+                0x79131a1900000000000000000000000000000000000000000000000000000000
+            )
+            mstore(0x84, sload(ER5))
+            pop(staticcall(gas(), sload(TP5), 0x80, 0x84, 0x00, 0x40))
+            // require(isActive || amtPool >= MAC);
+            if and(iszero(mload(0x00)), lt(mload(0x20), sload(ER5))) {
                 mstore(0x80, ERR)
                 mstore(0xa0, STR)
                 mstore(0xc0, ER1)
-                // revert(0x80, 0x64)
+                revert(0x80, 0x64)
             }
 
             // require(MAC(TTF).transferForm(msg.sender, address(this), ttl))
@@ -42,7 +46,7 @@ contract Market is Hashes {
                 mstore(0x80, ERR)
                 mstore(0xa0, STR)
                 mstore(0xc0, ER2)
-                // revert(0x80, 0x64)
+                revert(0x80, 0x64)
             }
 
             // reset ttl to transfer to admin
@@ -97,18 +101,6 @@ contract Market is Hashes {
                 mstore(0xc0, ER5)
                 revert(0x80, 0x64)
             }
-        }
-    }
-
-    function testMem(address adr) external {
-        assembly {
-            sstore(TTF, adr)
-        }
-    }
-
-    function testGameVoted(address adr) external {
-        assembly {
-            sstore(shl(0x05, adr), 0x01)
         }
     }
 }
