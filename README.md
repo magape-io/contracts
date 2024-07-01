@@ -32,6 +32,7 @@
   "Node"               : "0x57712Ed608cB7470DBBce3F2E0643588bE7CF50f",
   "Cross Chain"        : "0xE166045b3A5f656f43Cb2369eC828e049f7FC769",  
   "Arena"              : "0xbA9122b58A7234dDcdB0215C665178Ae19F04b13",
+  "Marketplace"        : "0x9058D8d9b486192E5c2235c1E915c9D67E1EF45d",
   "Deployer"           : "0xd399537cb268b2cE81DB79576a91B4230f54Ce18"
 }
 ```
@@ -42,6 +43,7 @@
 | Node | https://testnet.bscscan.com/address/0x57712Ed608cB7470DBBce3F2E0643588bE7CF50f#code |
 | Cross Chain | https://testnet.bscscan.com/address/0xE166045b3A5f656f43Cb2369eC828e049f7FC769#code |
 | Arena | https://testnet.bscscan.com/address/0xbA9122b58A7234dDcdB0215C665178Ae19F04b13#code |
+| Marketplace | https://testnet.bscscan.com/address/0x9058D8d9b486192E5c2235c1E915c9D67E1EF45d#code |
 | Deployer | https://testnet.bscscan.com/address/0xd399537cb268b2cE81DB79576a91B4230f54Ce18#code |
 
 
