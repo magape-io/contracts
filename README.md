@@ -52,23 +52,23 @@
 
 ```json
 {
-  "MagApe (NFT)"       : "0x5B5eBC739b59d69184AE895401690f13Fd68d818",
-  "MagApe Coin, $MAC"  : "0x2f75Bf420A799829D3C4060c1D25EAe8F940fC37",
-  "Node"               : "0xd73d9339b38c462cC41DB4548f67Dd6774326866",
-  "Cross Chain"        : "0xa56920B698261c4b78F9fE9F1C09DAc266521E15",
-  "Arena"              : "0x40b47Bc727B8472ff96e88c394ad1dADAdBA0fe8",
-  "Marketplace"        : "0x1698619434180C1561cfe94cDB124F4cBE86F8be",
+  "MagApe (NFT)"       : "0x1dAFAf1b2afCe7CD8B985Ed7e98f491043efB542",
+  "MagApe Coin, $MAC"  : "0x281Ff91326C020206D8B472c4De657413a35829D",
+  "Node"               : "0x0AD61A3312aB48d24B714DB368d2F9AE03A39f31",
+  "Cross Chain"        : "0x352A40cc430d8d87fCbA44516a583e424567F9Dd",
+  "Arena"              : "0xd18677e59a391Df7BdcDA3A450f6E5Fec68dbBC0",
+  "Marketplace"        : "0x612272a323776ea72F13f1c794D026B7Ac3a44d6",
   "Deployer"           : "0xd18677e59a391Df7BdcDA3A450f6E5Fec68dbBC0"
 }
 ```
 |  | Explorer |
 | --- | --- |
-| MagApe | http://testnet-api.magape.io:81/contracts/0x5B5eBC739b59d69184AE895401690f13Fd68d818 |
-| MAC | http://testnet-api.magape.io:81/contracts/0x2f75Bf420A799829D3C4060c1D25EAe8F940fC37 |
-| Node | http://testnet-api.magape.io:81/contracts/0xd73d9339b38c462cC41DB4548f67Dd6774326866 |
-| Cross Chain | http://testnet-api.magape.io:81/contracts/0xa56920B698261c4b78F9fE9F1C09DAc266521E15 |
-| Arena | http://testnet-api.magape.io:81/contracts/0x40b47Bc727B8472ff96e88c394ad1dADAdBA0fe8 |
-| Marketplace | http://testnet-api.magape.io:81/contracts/0x1698619434180C1561cfe94cDB124F4cBE86F8be |
-| Deployer | http://testnet-api.magape.io:81/contracts/0xd18677e59a391Df7BdcDA3A450f6E5Fec68dbBC0 |
+| MagApe | http://testnet-api.magape.io:81/contracts/0x1dAFAf1b2afCe7CD8B985Ed7e98f491043efB542 |
+| MAC | http://testnet-api.magape.io:81/contracts/0x281Ff91326C020206D8B472c4De657413a35829D |
+| Node | http://testnet-api.magape.io:81/contracts/0x0AD61A3312aB48d24B714DB368d2F9AE03A39f31 |
+| Cross Chain | http://testnet-api.magape.io:81/contracts/0x352A40cc430d8d87fCbA44516a583e424567F9Dd |
+| Arena | http://testnet-api.magape.io:81/contracts/0xd18677e59a391Df7BdcDA3A450f6E5Fec68dbBC0 |
+| Marketplace | http://testnet-api.magape.io:81/contracts/0x612272a323776ea72F13f1c794D026B7Ac3a44d6 |
+| Deployer | http://testnet-api.magape.io:81/contracts/0xCdc1432694E24dF98384Be0319018554e42E331a |
 
 
