@@ -7,8 +7,8 @@ import {Market} from "../Market/Market.sol";
 contract Marketplace is Upgrade(address(new Market())) {
     constructor() {
         assembly {
-            sstore(ER5, 0x0AD61A3312aB48d24B714DB368d2F9AE03A39f31) // node address
-            sstore(TTF, 0x281Ff91326C020206D8B472c4De657413a35829D) // $MAC address
+            sstore(ER5, 0x7Aa858A3Dc72caDDe3D52Fe791Bd9f0BdC7C4304) // node address
+            sstore(TTF, 0xf4B1Bff3BCfd0b394e8eD7D348Cb5d79A53840FD) // $MAC address
         }
     }
 }

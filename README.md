@@ -11,6 +11,7 @@
   "Node"               : "0x7Aa858A3Dc72caDDe3D52Fe791Bd9f0BdC7C4304",
   "Cross Chain"        : "0x5552164cD27c3321ADa14C5dBf34d8B6d4f6c8d5",
   "Arena"              : "0x66cA520773f6950Bf0e4dd386EAC42aE899eEAB6",
+  "Marketplace"        : "0xA9bb8947F3ec9F77B332c7aE613d515544B6181c",
   "Deployer"           : "0xFf91c03F7F8736961fc96054e2BCa27257AA0894"
 }
 ```
@@ -20,6 +21,8 @@
 | MAC | https://bscscan.com/address/0xf4B1Bff3BCfd0b394e8eD7D348Cb5d79A53840FD#code |
 | Node | https://bscscan.com/address/0x7Aa858A3Dc72caDDe3D52Fe791Bd9f0BdC7C4304#code |
 | Cross Chain | https://bscscan.com/address/0x5552164cD27c3321ADa14C5dBf34d8B6d4f6c8d5#code |
+| Arena | https://bscscan.com/address/0x66cA520773f6950Bf0e4dd386EAC42aE899eEAB6#code |
+| Marketplace | https://bscscan.com/address/0xA9bb8947F3ec9F77B332c7aE613d515544B6181c#code |
 | Deployer | https://bscscan.com/address/0xFf91c03F7F8736961fc96054e2BCa27257AA0894#code |
 
 ## BSC Testnet
