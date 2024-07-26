@@ -11,10 +11,9 @@ import {Distribute} from "../Market/Distribute.sol";
 import {Market} from "../Market/Market.sol";
 import "../Vote/VoteTypes.sol";
 
-// import {Market} from "../Market/Market.sol";
-
 contract Deployer is Hashes {
-    constructor() {
+
+    constructor() payable {
         address adr = msg.sender;
         address ad2 = msg.sender;
         address ad3 = msg.sender;
@@ -86,7 +85,6 @@ contract Deployer is Hashes {
                 0xa4,
                 0x68747470733a2f2f6170692e6d61676170652e696f2f69706e732f6b326b3472 // testnets
                 // 0x68747470733a2f2f6170692e6d61676170652e696f2f69706e732f6b326b3472 // mainnet test
-
             )
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri2 = str2
             mstore(0x84, add(ER4, 0x02))

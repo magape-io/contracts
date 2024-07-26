@@ -5,7 +5,7 @@ import {Upgrade} from "../Deploy/Upgrade.sol";
 import {Distribute} from "../Market/Distribute.sol";
 
 contract Arena is Upgrade(address(new Distribute())) {
-    constructor() {
+    constructor() payable {
         assembly {
             sstore(TFM, 0x05) // fee = 20%
         }

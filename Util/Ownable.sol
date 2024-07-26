@@ -16,7 +16,7 @@ contract Ownable is Hashes {
         _;
     }
 
-    constructor() {
+    constructor() payable {
         assembly {
             sstore(OWO, caller()) // owner = msg.sender
         }

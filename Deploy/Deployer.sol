@@ -10,7 +10,7 @@ import {CrossChain} from "../CrossChain/CrossChain.sol";
 import "../Vote/VoteTypes.sol";
 
 contract Deployer is Hashes {
-    constructor() {
+    constructor() payable {
         (
             Upgrade mac,
             Upgrade mag,

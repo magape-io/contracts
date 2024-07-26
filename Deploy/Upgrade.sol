@@ -4,7 +4,7 @@ pragma solidity 0.8.0;
 import {Ownable} from "../Util/Ownable.sol";
 
 contract Upgrade is Ownable {
-    constructor(address adr) {
+    constructor(address adr) payable {
         assembly {
             sstore(IN2, adr) // implementation = adr;
         } 
