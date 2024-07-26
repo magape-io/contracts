@@ -7,6 +7,8 @@ import {Node} from "../Governance/Node.sol";
 import {Upgrade} from "../Deploy/Upgrade.sol";
 import {Hashes} from "../Util/Hashes.sol";
 import {CrossChain} from "../CrossChain/CrossChain.sol";
+import {Distribute} from "../Market/Distribute.sol";
+import {Market} from "../Market/Market.sol";
 import "../Vote/VoteTypes.sol";
 
 // import {Market} from "../Market/Market.sol";
@@ -23,6 +25,8 @@ contract Deployer is Hashes {
             Upgrade mag,
             Upgrade nod,
             Upgrade crc,
+            Upgrade are,
+            Upgrade mkt,
             GameAdd vo1,
             GameRemove vo2,
             WithdrawBulk vo3
@@ -31,6 +35,8 @@ contract Deployer is Hashes {
                 new Upgrade(address(new MagApe())),
                 new Upgrade(address(new Node())),
                 new Upgrade(address(new CrossChain())),
+                new Upgrade(address(new Distribute())),
+                new Upgrade(address(new Market())),
                 new GameAdd(),
                 new GameRemove(),
                 new WithdrawBulk()
@@ -41,6 +47,8 @@ contract Deployer is Hashes {
             sstore(0x02, mag)
             sstore(0x03, mac)
             sstore(0x04, crc)
+            sstore(0x05, are)
+            sstore(0x06, mkt)
 
             // MAC(address(mac)).mint();
             mstore(
@@ -156,13 +164,28 @@ contract Deployer is Hashes {
             mstore(0xa4, vo3)
             pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.voteTypes[3] = vo3
 
-            // Upgrade(mac).mem(OWO, adr);
+            // Upgrade(are).mem(TFM, 0x05);
+            mstore(0x84, TFM)
+            mstore(0xa4, 0x05)
+            pop(call(gas(), are, 0x00, 0x80, 0x44, 0x00, 0x00)) // are.fee = 5 (20%)
+
+            // Upgrade(mkt).mem(___, adr);
+            mstore(0x84, ER5)
+            mstore(0xa4, nod)
+            pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.node = nod
+            mstore(0x84, TTF)
+            mstore(0xa4, mac)
+            pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.node = nod
+
+            // Upgrade(___).mem(OWO, adr);
             mstore(0x84, OWO)
             mstore(0xa4, adr)
             pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // nod.owner = adr
             pop(call(gas(), mac, 0x00, 0x80, 0x44, 0x00, 0x00)) // mac.owner = adr
             pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.owner = adr
             pop(call(gas(), crc, 0x00, 0x80, 0x44, 0x00, 0x00)) // crc.owner = adr
+            pop(call(gas(), are, 0x00, 0x80, 0x44, 0x00, 0x00)) // are.owner = adr
+            pop(call(gas(), mkt, 0x00, 0x80, 0x44, 0x00, 0x00)) // mkt.owner = adr
         }
     }
 
@@ -173,7 +196,9 @@ contract Deployer is Hashes {
             address nod,
             address mag,
             address mac,
-            address crc
+            address crc,
+            address are,
+            address mkt
         )
     {
         assembly {
@@ -181,6 +206,8 @@ contract Deployer is Hashes {
             mag := sload(0x02)
             mac := sload(0x03)
             crc := sload(0x04)
+            are := sload(0x05)
+            mkt := sload(0x06)
         }
     }
 }
