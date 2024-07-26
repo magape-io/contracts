@@ -46,7 +46,7 @@
 ```
 |  | Explorer |
 | --- | --- |
-| MagApe | https://testnet.bscscan.com/address/0x3FB236F17054c24DB20FDf6135Ce334DE7451928 |
+| ``` MagApe ``` | https://testnet.bscscan.com/address/0x3FB236F17054c24DB20FDf6135Ce334DE7451928 |
 | MAC | https://testnet.bscscan.com/address/0xC376Ef652f7559eE5cA942663d90242225309027 |
 | Node | https://testnet.bscscan.com/address/0x57712Ed608cB7470DBBce3F2E0643588bE7CF50f |
 | Cross Chain | https://testnet.bscscan.com/address/0xE166045b3A5f656f43Cb2369eC828e049f7FC769 |
