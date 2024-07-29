@@ -59,6 +59,35 @@
 
 ---
 
+## Sepolia Testnet
+
+**MagApe**
+```
+0x05d3EF422E8D074e79c2A516eAee02Ea0f58F3f7
+```
+**MAC**
+```
+0x51FC7823c8c88232B65e874539221DdD7DE06cd9
+```
+**Node** 
+```
+0xE0c1ACd2744C9bD2e480e0eED5E2d3F84a52Af55
+```
+**Cross Chain** 
+```
+0x67499F97eA4CaE589D543e184F49C8E917af399D
+```
+**Arena**
+```
+0xaB63457cd66F9f485A4390AA464F75eB713FA6F2
+```
+**Marketplace** 
+```
+0x5358F4CAefe5b574670Bd26E221252A2dC4E6Dc2
+```
+
+---
+
 ## Etherlink Testnet
 
 **MagApe**
