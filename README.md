@@ -8,7 +8,7 @@
 
 
 
-## BSC Mainnet
+## [BSC Mainnet](https://bscscan.com/)
 
 **MagApe**
 ```
@@ -38,7 +38,7 @@
 
 ---
 
-## BSC Testnet
+## [BSC Testnet](https://testnet.bscscan.com/)
 
 **MagApe**
 ```
@@ -68,7 +68,7 @@
 
 ---
 
-## Sepolia Testnet
+## [Sepolia Testnet](https://sepolia.etherscan.io/)
 
 **MagApe**
 ```
@@ -98,7 +98,7 @@
 
 ---
 
-## Etherlink Testnet
+## [Etherlink Testnet](https://testnet.explorer.etherlink.com/)
 
 **MagApe**
 ```
@@ -158,7 +158,7 @@
 
 ---
 
-## Ancient8 Testnet
+## [Ancient8 Testnet](https://scanv2-testnet.ancient8.gg/)
 
 **MagApe**
 ```
@@ -188,7 +188,7 @@
 
 ---
 
-## Mirai Testnet
+## [Mirai Testnet](https://testnet.miraiscan.io/)
 
 **MagApe**
 ```
@@ -218,7 +218,7 @@
 
 ---
 
-## MagApe Testnet
+## [MagApe Testnet](http://192.168.1.178/)
 
 **MagApe**
 ```
