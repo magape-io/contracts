@@ -4,7 +4,7 @@
 | | | | |
 |---|---|---|---|
 | [BSC Mainnet](#bsc-mainnet) | [BSC Testnet](#bsc-testnet) | [Sepolia Testnet](#sepolia-testnet) | [Etherlink Testnet](#etherlink-testnet) |
-| [Ancient8 Testnet](#ancient8-testnet) | [MagApe Testnet](#magape-testnet) | | |
+| [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | [MagApe Testnet](#magape-testnet) |  |
 
 
 
@@ -153,6 +153,36 @@
 **Marketplace** 
 ```
 0x135F67e44191ab6b3355134d8211Cd72C8926cfA
+```
+[Back to top](#deployed-magape-contracts)
+
+---
+
+## Mirai Testnet
+
+**MagApe**
+```
+0xCCb0d7c742C4C78cd056B94608E13497FAe05ea2
+```
+**MAC**
+```
+0x0e85b0388E52b290803aFbc4B7Ae82d2a4B4f6c7
+```
+**Node** 
+```
+0x4f667e11B64B3BF6F78A38EDCA839d598b858457
+```
+**Cross Chain** 
+```
+0x381D256D7925E217FE6717CA3d676eDd4a30e780
+```
+**Arena**
+```
+0x55DB8C2e5be232A69fb28e5f77Da9554E0f9113F
+```
+**Marketplace** 
+```
+0xb771D85C838B90684834886a1062CcC3eDA003bC
 ```
 [Back to top](#deployed-magape-contracts)
 
