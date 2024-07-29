@@ -1,12 +1,11 @@
 # Deployed MagApe Contracts
 
 
-* [BSC Mainnet](#bsc-mainnet)
-* [BSC Testnet](#bsc-testnet)
-* [Sepolia Testnet](#sepolia-testnet)
-* [Etherlink Testnet](#etherlink-testnet)
-* [Ancient8 Testnet](#ancient8-testnet)
-* [MagApe Testnet](#magape-testnet)
+|              |               |               |                 |
+|-----------------------|-----------------------|-----------------------|-------------------------|
+| [BSC Mainnet](#bsc-mainnet)     | [BSC Testnet](#bsc-testnet)     | [Sepolia Testnet](#sepolia-testnet) | [Etherlink Testnet](#etherlink-testnet) |
+| [Ancient8 Testnet](#ancient8-testnet) | [MagApe Testnet](#magape-testnet) |                       |                         |
+
 
 
 ## BSC Mainnet
