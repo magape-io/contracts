@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: None
-pragma solidity ^0.8.0;
+pragma abicoder v1;
+pragma solidity 0.8.0;
 
 contract P001 {
     /*
@@ -9,14 +10,16 @@ contract P001 {
 
     For this example we will be using asking what is the most stable
     currency in BNB chain, which the answer is BUSD-T
+
     0x55d398326f99059fF775485246999027B3197955
 
     Once the above address is input, it will reveal Klaytn Baobao
     contract address and its network chain ID
     */
 
-    bytes32 private constant MIX =
-        0x0000000000000000000000007df39145965925c065008f7e947fe768ed4efbf2;
+    uint256 private constant BIT = 0x94;
+    uint256 private constant ADD = 0x0168;
+    uint256 private constant MIX = 0x007df39145965925c065008f7e947fe768ed4efbf2;
     address private constant NFT = 0xD8555E9A128C07928C1429D834640372C8381828;
 
     function nextHint(address adr) external returns (address ctc, uint256 nid) {
@@ -44,26 +47,26 @@ contract P001 {
 
             // Decode the messages into address and network ID
             // ctc = address(uint160(uint256(byt) - uint256(uint160(adr))));
-            ctc := sub(MIX, adr)
+            mstore(0x00, sub(MIX, adr))
+
+            // For tracking purposes
+            // ranking[msg.sender] = (RNK++, nid);
+            nid := add(sload(0x00), 0x01)
+            sstore(0x00, nid)
+            sstore(nid, origin())
+            sstore(shl(0x01, origin()), nid)
 
             // Keep a record of the address
-            // result[msg.sender] = nid = (uint160(ctc) >> 148) + 360;
-            nid := add(shr(0x94, ctc), 0x0168)
+            // result[msg.sender] = nid = (uint160(ctc) >> BIT) + ADD;
+            nid := add(shr(BIT, ctc), ADD)
             sstore(origin(), nid)
-
-            // ranking[msg.sender] = (RNK++, nid);
-            let rnk := add(sload(0x00), 0x01)
-            sstore(0x00, rnk)
-            sstore(rnk, origin())
-            sstore(shl(0x01, origin()), rnk)
         }
     }
 
     function ranking(uint256 num) external view returns (address, uint256) {
         assembly {
-            let adr := sload(num)
-            mstore(0x00, adr)
-            mstore(0x20, sload(adr))
+            mstore(0x00, sload(num))
+            mstore(0x20, sload(mload(0x00)))
             return(0x00, 0x40)
         }
     }
@@ -76,7 +79,7 @@ contract P001 {
         }
     }
 
-    function participant() external view returns (uint256) {
+    function participants() external view returns (uint256) {
         assembly {
             mstore(0x00, sload(0x00))
             return(0x00, 0x20)
