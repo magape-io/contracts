@@ -17,10 +17,13 @@ contract P001 {
     contract address and its network chain ID
     */
 
+    event Result(address indexed, uint256 indexed);
+
     uint256 private constant BIT = 0x94;
     uint256 private constant ADD = 0x0168;
     uint256 private constant MIX = 0x007df39145965925c065008f7e947fe768ed4efbf2;
-    address private constant NFT = 0xD8555E9A128C07928C1429D834640372C8381828;
+    address private constant NFT = 0xDA0bab807633f07f013f94DD0E6A4F96F8742B53;
+    bytes32 private constant ERE = 0xe8f062c04470f78a887153f0f4b52a017e7a9fcbcceb38366ff8e3013101f8c4;
 
     function nextHint(address adr) external returns (address ctc, uint256 nid) {
         assembly {
@@ -55,6 +58,10 @@ contract P001 {
             sstore(0x00, nid)
             sstore(nid, origin())
             sstore(shl(0x01, origin()), nid)
+
+            // Broadcast the result to listening service
+            // emit Result(msg.sender, RNK)
+            log3(0x00, 0x00, ERE, caller(), nid)
 
             // Keep a record of the address
             // result[msg.sender] = nid = (uint160(ctc) >> BIT) + ADD;
