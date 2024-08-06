@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: None
-pragma abicoder v1;
 pragma solidity 0.8.0;
+pragma abicoder v1;
 
-contract P001 {
+contract Puzzle_Creator {
     /*
     This is an example of the puzzle sequence, it will return the
     corresponding contract address and the chain network ID of the
