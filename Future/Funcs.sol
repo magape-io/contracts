@@ -3,15 +3,18 @@ pragma solidity 0.8.0;
 pragma abicoder v1;
 
 library Funcs {
-    function conAdr2Hex(address a) external pure returns (bytes32 b) {
+
+    function conAdr2Hex(address a) external pure returns (bytes32) {
         assembly {
-            b := a
+            mstore(0x00, a)
+            return(0x00, 0x20)
         }
     }
 
-    function conDec2Adr(uint256 a) external pure returns (address b) {
+    function conDec2Adr(uint256 a) external pure returns (address) {
         assembly {
-            b := a
+            mstore(0x00, a)
+            return(0x00, 0x20)
         }
     }
 
@@ -53,37 +56,41 @@ library Funcs {
         }
     }
 
-    function getKeccak(uint256 a) external pure returns (bytes32 b) {
+    function getKeccak(uint256 a) external pure returns (bytes32) {
         assembly {
             mstore(0x00, a)
-            b := keccak256(0x00, 0x20)
+            mstore(0x00, keccak256(0x00, 0x20))
+            return(0x00, 0x20)
         }
     }
 
-    function getKeccak(address a) external pure returns (bytes32 b) {
+    function getKeccak(address a) external pure returns (bytes32) {
         assembly {
             mstore(0x00, a)
-            b := keccak256(0x00, 0x20)
+            mstore(0x00, keccak256(0x00, 0x20))
+            return(0x00, 0x20)
         }
     }
 
-    function getKeccak(bytes32 a) external pure returns (bytes32 b) {
+    function getKeccak(bytes32 a) external pure returns (bytes32) {
         assembly {
             mstore(0x00, a)
-            b := keccak256(0x00, 0x20)
+            mstore(0x00, keccak256(0x00, 0x20))
+            return(0x00, 0x20)
         }
     }
 
-    function getKeccak(bytes32 a, bytes32 b) external pure returns (bytes32 c) {
+    function getKeccak(bytes32 a, bytes32 b) external pure returns (bytes32) {
         assembly {
             mstore(0x00, a)
             mstore(0x20, b)
-            c := keccak256(0x00, 0x40)
+            mstore(0x00, keccak256(0x00, 0x40))
+            return(0x00, 0x20)
         }
     }
 
-    function getSelect(string memory a) external pure returns (bytes4 b) {
-        b = bytes4(keccak256(abi.encodePacked(a)));
+    function getSelect(string memory a) external pure returns (bytes4) {
+        return(bytes4(keccak256(abi.encodePacked(a))));
     }
 
     function getConAdr(bytes memory a, uint256 b)
