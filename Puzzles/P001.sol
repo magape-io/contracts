@@ -22,14 +22,15 @@ contract P001 {
     uint256 private constant BIT = 0x94;
     uint256 private constant ADD = 0x0168;
     uint256 private constant MIX = 0x007df39145965925c065008f7e947fe768ed4efbf2;
-    address private constant NFT = 0xDA0bab807633f07f013f94DD0E6A4F96F8742B53;
-    bytes32 private constant ERE = 0xe8f062c04470f78a887153f0f4b52a017e7a9fcbcceb38366ff8e3013101f8c4;
+    address private constant NFT = 0x3FB236F17054c24DB20FDf6135Ce334DE7451928;
 
-    function nextHint(address adr) external returns (address ctc, uint256 nid) {
+    constructor() payable {}
+
+    function nextHint(address adr) external {
         assembly {
             // Only MagApe NFT holder are able to participate
             // require(MAC(NFT).balanceOf(msg.sender) > 0, "No NFT");
-            mstore(0x80, shl(224, 0x70a08231))
+            mstore(0x80, shl(0xe0, 0x70a08231))
             mstore(0x84, origin())
             pop(staticcall(gas(), NFT, 0x80, 0x24, 0x00, 0x20))
             if iszero(mload(0x00)) {
@@ -48,48 +49,20 @@ contract P001 {
                 revert(0x80, 0x64)
             }
 
-            // Decode the messages into address and network ID
-            // ctc = address(uint160(uint256(byt) - uint256(uint160(adr))));
-            mstore(0x00, sub(MIX, adr))
+            // Keep a record of the address
+            // result[msg.sender] = tmp = (uint160(ctc) >> BIT) + ADD;
+            sstore(origin(), add(shr(BIT, sub(MIX, adr)), ADD))
 
             // For tracking purposes
-            // ranking[msg.sender] = (RNK++, nid);
-            nid := add(sload(0x00), 0x01)
-            sstore(0x00, nid)
-            sstore(nid, origin())
-            sstore(shl(0x01, origin()), nid)
+            // ranking[msg.sender] = (RNK++, tmp);
+            let tmp := add(sload(0x00), 0x01)
+            sstore(0x00, tmp)
+            sstore(tmp, origin())
+            sstore(shl(0x01, origin()), tmp)
 
             // Broadcast the result to listening service
             // emit Result(msg.sender, RNK)
-            log3(0x00, 0x00, ERE, caller(), nid)
-
-            // Keep a record of the address
-            // result[msg.sender] = nid = (uint160(ctc) >> BIT) + ADD;
-            nid := add(shr(BIT, ctc), ADD)
-            sstore(origin(), nid)
-        }
-    }
-
-    function ranking(uint256 num) external view returns (address, uint256) {
-        assembly {
-            mstore(0x00, sload(num))
-            mstore(0x20, sload(mload(0x00)))
-            return(0x00, 0x40)
-        }
-    }
-
-    function result(address adr) external view returns (uint256, uint256) {
-        assembly {
-            mstore(0x00, sload(adr))
-            mstore(0x20, sload(shl(0x01, adr)))
-            return(0x00, 0x40)
-        }
-    }
-
-    function participants() external view returns (uint256) {
-        assembly {
-            mstore(0x00, sload(0x00))
-            return(0x00, 0x20)
+            log3(0x00, 0x00, 0xe8f062c04470f78a887153f0f4b52a017e7a9fcbcceb38366ff8e3013101f8c4, caller(), tmp)
         }
     }
 }
