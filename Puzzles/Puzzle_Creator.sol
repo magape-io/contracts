@@ -2,21 +2,11 @@
 pragma solidity 0.8.0;
 pragma abicoder v1;
 
+/*
+0x55d398326f99059fF775485246999027B3197955
+*/
+
 contract Puzzle_Creator {
-    /*
-    This is an example of the puzzle sequence, it will return the
-    corresponding contract address and the chain network ID of the
-    next puzzle.
-
-    For this example we will be using asking what is the most stable
-    currency in BNB chain, which the answer is BUSD-T
-
-    0x55d398326f99059fF775485246999027B3197955
-
-    Once the above address is input, it will reveal Klaytn Baobao
-    contract address and its network chain ID
-    */
-
     event Result(address indexed, uint256 indexed);
 
     uint256 private constant BIT = 0x94;
@@ -62,7 +52,13 @@ contract Puzzle_Creator {
 
             // Broadcast the result to listening service
             // emit Result(msg.sender, RNK)
-            log3(0x00, 0x00, 0xe8f062c04470f78a887153f0f4b52a017e7a9fcbcceb38366ff8e3013101f8c4, caller(), tmp)
+            log3(
+                0x00,
+                0x00,
+                0xe8f062c04470f78a887153f0f4b52a017e7a9fcbcceb38366ff8e3013101f8c4,
+                caller(),
+                tmp
+            )
         }
     }
 }
