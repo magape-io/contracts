@@ -5,7 +5,7 @@
 |---|---|---|---|
 | [BSC Mainnet](#bsc-mainnet) | [BSC Testnet](#bsc-testnet) | [Sepolia Testnet](#sepolia-testnet) | [Etherlink Testnet](#etherlink-testnet) |
 | [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | [Klaytn Testnet](#klaytn-testnet) |
-| [MagApe Testnet 1](#magape-testnet-1) | | | 
+| [MagApe Testnet 1](#magape-testnet-1) | [MagApe Testnet 2](#magape-testnet-2) | | 
 
 
 ## [BSC Mainnet](https://bscscan.com/)
@@ -248,7 +248,7 @@
 
 ---
 
-## [MagApe Testnet 1](https://explorer.buildbear.io/full-elektra-e79169fa/transactions)
+## [MagApe Testnet 1](https://full-elektra-e79169fa.blockscout.buildbear.io/)
 
 **MagApe**
 ```
@@ -278,7 +278,7 @@
 
 ---
 
-## [MagApe Testnet 2](https://explorer.buildbear.io/miniature-husk-93484ab0/transactions)
+## [MagApe Testnet 2](https://miniature-husk-93484ab0.blockscout.buildbear.io/)
 
 **MagApe**
 ```
