@@ -4,7 +4,7 @@ pragma solidity 0.8.0;
 import {MAC} from "../GameAsset/MAC.sol";
 import {MagApe} from "../GameAsset/MagApe.sol";
 import {Node} from "../Governance/Node.sol";
-import {Upgrade} from "../Deploy/Upgrade.sol";
+import {Upgrade} from "../Proxy/Upgrade.sol";
 import {Hashes} from "../Util/Hashes.sol";
 import {CrossChain} from "../CrossChain/CrossChain.sol";
 import "../Vote/VoteTypes.sol";
