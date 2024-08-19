@@ -5,7 +5,7 @@
 |---|---|---|---|
 | [BSC Mainnet](#bsc-mainnet) | [BSC Testnet](#bsc-testnet) | [Sepolia Testnet](#sepolia-testnet) | [Etherlink Testnet](#etherlink-testnet) |
 | [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | [Klaytn Testnet](#klaytn-testnet) |
-| [MagApe Testnet](#magape-testnet) | | | 
+| [MagApe Testnet 1](#magape-testnet-1) | | | 
 
 
 ## [BSC Mainnet](https://bscscan.com/)
@@ -248,7 +248,7 @@
 
 ---
 
-## [MagApe Testnet](https://explorer.buildbear.io/full-elektra-e79169fa/transactions)
+## [MagApe Testnet 1](https://explorer.buildbear.io/full-elektra-e79169fa/transactions)
 
 **MagApe**
 ```
@@ -273,6 +273,36 @@
 **Marketplace** 
 ```
 0x34Db1a9F4d5422002d00911cbC91615A3EE6956B
+```
+[Back to top](#deployed-magape-contracts)
+
+---
+
+## [MagApe Testnet 2](https://explorer.buildbear.io/miniature-husk-93484ab0/transactions)
+
+**MagApe**
+```
+0xa660096913E961161c645DCe077bDbb079467500
+```
+**MAC**
+```
+0x08e78c476d9adB51A2EC66f4163f5f3F55650a04
+```
+**Node** 
+```
+0x83C22B7E4befa81b55944e605F17E6C0638502D1
+```
+**Cross Chain** 
+```
+0x08cDA72130cc3d2A5742c9700a228DB9320B9086
+```
+**Arena**
+```
+0xDd7A00b075ED504adCe38b71A3A809005778Ff49
+```
+**Marketplace** 
+```
+0x52915b90B55aB19643724f9a1467D0338FF77f06
 ```
 [Back to top](#deployed-magape-contracts)
 
