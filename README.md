@@ -4,7 +4,7 @@
 | | | | |
 |---|---|---|---|
 | [BSC Mainnet](#bsc-mainnet) | [XDC Mainnet](#xdc-mainnet) | [BSC Testnet](#bsc-testnet) | [Sepolia Testnet](#sepolia-testnet) |
-| [Etherlink Testnet](#etherlink-testnet) || [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | 
+| [Etherlink Testnet](#etherlink-testnet) | [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | 
 | [Klaytn Testnet](#klaytn-testnet) | [MagApe Testnet 1](#magape-testnet-1) | [MagApe Testnet 2](#magape-testnet-2) | |
 
 
