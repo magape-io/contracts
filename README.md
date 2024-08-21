@@ -3,9 +3,9 @@
 
 | | | | |
 |---|---|---|---|
-| [BSC Mainnet](#bsc-mainnet) | [BSC Testnet](#bsc-testnet) | [Sepolia Testnet](#sepolia-testnet) | [Etherlink Testnet](#etherlink-testnet) |
-| [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | [Klaytn Testnet](#klaytn-testnet) |
-| [MagApe Testnet 1](#magape-testnet-1) | [MagApe Testnet 2](#magape-testnet-2) | | 
+| [BSC Mainnet](#bsc-mainnet) | [XDC Mainnet](#xdc-mainnet) | [BSC Testnet](#bsc-testnet) | [Sepolia Testnet](#sepolia-testnet) |
+| [Etherlink Testnet](#etherlink-testnet) || [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | 
+| [Klaytn Testnet](#klaytn-testnet) | [MagApe Testnet 1](#magape-testnet-1) | [MagApe Testnet 2](#magape-testnet-2) | |
 
 
 ## [BSC Mainnet](https://bscscan.com/)
@@ -33,6 +33,36 @@
 **Marketplace**
 ```
 0xA9bb8947F3ec9F77B332c7aE613d515544B6181c
+```
+[Back to top](#deployed-magape-contracts)
+
+---
+
+## [XDC Mainnet](https://explorer.xinfin.network/)
+
+**MagApe**
+```
+0x76a7685Eb21b340FFe80eb987A2297cF1D2a3D2e
+```
+**MAC**
+```
+0xF04ebA6b2dD3De0CEe1fD024A7222071E2076492
+```
+**Node** 
+```
+0x54ea7794f11464E4f81750c92dbfCd9a758b7D05
+```
+**Cross Chain** 
+```
+0x32d3BB3E0D018c768aD474a47A79f89A0405739D
+```
+**Arena**
+```
+0xEAA8e357AFfB2842C79ac3F8cfDEE42dcB9C94d6
+```
+**Marketplace** 
+```
+0xB572b35910bd0bE97e0299F1973D95C8a8F55606
 ```
 [Back to top](#deployed-magape-contracts)
 
