@@ -7,7 +7,7 @@ contract Upgrade is Ownable {
     constructor(address adr) payable {
         assembly {
             sstore(IN2, adr) // implementation = adr;
-        } 
+        }
     }
 
     fallback() external payable {
@@ -68,9 +68,19 @@ contract Upgrade is Ownable {
         }
     }
 
-    function mem(bytes32 byt, bytes32 val) external onlyOwner {
+    function mem(bytes32 byt, bytes32 val) public onlyOwner {
         assembly {
             sstore(byt, val)
+        }
+    }
+
+    function mem(bytes32[] calldata byt, bytes32[] calldata val)
+        external
+        onlyOwner
+    {
+        unchecked {
+            uint256 len = byt.length;
+            for (uint256 i; i < len; ++i) mem(byt[i], val[i]);
         }
     }
 }
