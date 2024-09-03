@@ -14,10 +14,9 @@ import "../Vote/VoteTypes.sol";
 contract Deployer is Hashes {
 
     constructor() payable {
-        address adr = msg.sender;
-        address ad2 = msg.sender;
-        address ad3 = msg.sender;
-        // owner, signer, game
+        address adr = msg.sender; // owner
+        address ad2 = msg.sender; // signer
+        address ad3 = msg.sender; // game
 
         (
             Upgrade mac,
@@ -86,7 +85,7 @@ contract Deployer is Hashes {
                 0x68747470733a2f2f6170692e6d61676170652e696f2f69706e732f6b326b3472 // testnets
                 // 0x68747470733a2f2f6170692e6d61676170652e696f2f69706e732f6b326b3472 // mainnet test
             )
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri2 = str2
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri2 = str1
             mstore(0x84, add(ER4, 0x02))
             mstore(
                 0xa4,
@@ -95,7 +94,7 @@ contract Deployer is Hashes {
                 // 0x386e32333875676867366d387867743977667a666465783238316a3466797973 // Sepolia
                 // 0x38703330306972786c7467666e657830316533697664626232386f396a766f72 // mainnet test
             )
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri3 = str3
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri3 = str2
             mstore(0x84, add(ER4, 0x03))
             mstore(
                 0xa4,
@@ -104,7 +103,7 @@ contract Deployer is Hashes {
                 // 0x79697a7863726b77396e7530677737706963672f000000000000000000000000 // Sepolia
                 // 0x7a376e31343831377572386f67366c3830706b2f000000000000000000000000 // mainnet test
             )
-            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri4 = str4
+            pop(call(gas(), mag, 0x00, 0x80, 0x44, 0x00, 0x00)) // mag.uri4 = str3
 
             // Upgrade(nod).mem(adr << 5, true);
             mstore(0x84, shl(0x05, ad3))
@@ -117,11 +116,11 @@ contract Deployer is Hashes {
             ***/
             mstore(0x84, shl(0x05, 0x4D11dF920E0E48c7E132e5a9754C7e754Cd6EBFB))
             mstore(0xa4, 0x01)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // game[ad3] = true
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // game[game2] = true
 
             mstore(0x84, shl(0x05, 0x40f0de13ff4454f2dc786e38504cf4efc2dd12ca))
             mstore(0xa4, 0x01)
-            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // game[ad3] = true
+            pop(call(gas(), nod, 0x00, 0x80, 0x44, 0x00, 0x00)) // game[game3] = true
             /***
             LIVE: REMOVE END
             ***/
