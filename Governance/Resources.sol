@@ -23,27 +23,11 @@ contract Resources is Hashes, ECDSA {
         }
     }
 
-    function topUp(address adr, uint256 amt) external {
+    function resourceIn(address adr, uint256 amt) external {
         assembly {
             // game[adr].amt += amt;
             let tmp := shl(0x06, adr)
             sstore(tmp, add(sload(tmp), amt))
-        }
-        _transferFrom(amt);
-    }
-
-    /*
-    This function will be obsolete in MagApe 2.0
-    */
-    function resourceIn(address adr, uint256 amt) external {
-        assembly {
-            // require(games[adr].stt);
-            if iszero(sload(shl(0x05, adr))) {
-                mstore(0x80, ERR)
-                mstore(0xa0, STR)
-                mstore(0xc0, ER1)
-                revert(0x80, 0x64)
-            }
 
             // emit Transfer(adr, ad2, amt)
             mstore(0x00, amt)
@@ -57,7 +41,12 @@ contract Resources is Hashes, ECDSA {
             // emit P2PBuy(bid, amt)
             mstore(0x00, bid)
             mstore(0x20, amt)
-            log2(0x00, 0x40, 0x5b6b68c7bdbd1a2670386a943b40bb818dd5806b1cbfdbe38b4b399a8a7e6eab, caller())
+            log2(
+                0x00,
+                0x40,
+                0x5b6b68c7bdbd1a2670386a943b40bb818dd5806b1cbfdbe38b4b399a8a7e6eab,
+                caller()
+            )
         }
         _transferFrom(amt);
     }
@@ -84,18 +73,15 @@ contract Resources is Hashes, ECDSA {
                 revert(0x80, 0x64)
             }
 
-            // if(!game[adr].stt)
-            if iszero(sload(shl(0x05, adr))) {
-                r := shl(0x06, adr)
-                s := sload(r)
-                if gt(amt, s) {
-                    mstore(0x80, ERR)
-                    mstore(0xa0, STR)
-                    mstore(0xc0, ER5)
-                    revert(0x80, 0x64)
-                }
-                sstore(r, sub(s, amt)) // game[adr].amt -= amt;
+            r := shl(0x06, adr)
+            s := sload(r)
+            if gt(amt, s) {
+                mstore(0x80, ERR)
+                mstore(0xa0, STR)
+                mstore(0xc0, ER5)
+                revert(0x80, 0x64)
             }
+            sstore(r, sub(s, amt)) // game[adr].amt -= amt;
         }
     }
 }
