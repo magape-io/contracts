@@ -52,14 +52,10 @@ contract MagApe is Attachment {
         }
     }
 
-    function _uint2Str(uint256 tid) private pure returns (string memory) {
+    function tokenURI(uint256 tid) external view returns (string memory) {
         assembly {
-            let byt
-            let len
-            if eq(tid, 0x00) {
-                byt := 0x3000000000000000000000000000000000000000000000000000000000000000
-                len := 0x01
-            }
+            let len := sload(ER4)
+            let byt := sload(add(ER4, 0x01))
             for {
 
             } gt(tid, 0x00) {
@@ -75,22 +71,11 @@ contract MagApe is Attachment {
                 )
                 tid := div(tid, 0x0a)
             }
-
             mstore(0x80, 0x20)
             mstore(0xa0, len)
             mstore(0xc0, byt)
             return(0x80, 0x60)
         }
-    }
-
-    function tokenURI(uint256 tid) external view returns (string memory str) {
-        assembly {
-            str := mload(0x40)
-            mstore(str, sload(ER4))
-            mstore(add(str, 0x20), sload(add(ER4, 0x01)))
-            mstore(0x40, add(str, 0x40))
-        }
-        str = string(abi.encodePacked(str, _uint2Str(tid)));
     }
 
     function getApproved(uint256 tid) external view returns (address adr) {
