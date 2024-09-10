@@ -3,8 +3,9 @@ pragma solidity 0.8.0;
 
 import {Resources} from "../Governance/Resources.sol";
 import {Manual} from "../Governance/Manual.sol";
+import {Trove} from "../Governance/Trove.sol";
 
-contract Node is Resources, Manual {
+contract Node is Resources, Manual, Trove {
     event Transfer(address indexed, address indexed, uint256);
     /* 
     Voting event explained
