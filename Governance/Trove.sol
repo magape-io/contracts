@@ -55,7 +55,7 @@ contract Trove is Hashes, ECDSA {
 
     function stake(uint256 amt) external {
         assembly {
-            // MAC(TTF).transfer(toa, amt)
+            // require(MAC(TTF).transfer(toa, amt))
             mstore(0x80, TTF)
             mstore(0x84, caller())
             mstore(0xa4, amt)
@@ -66,6 +66,7 @@ contract Trove is Hashes, ECDSA {
                 revert(0x80, 0x64)
             }
 
+            // require(stake[adr].bal >= amt);
             let ptr := shl(0x06, caller())
             let bal := sload(ptr)
             if gt(amt, bal) {
