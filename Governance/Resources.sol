@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: None
-pragma solidity 0.8.0;
+pragma solidity 0.8.27;
 
 import {Hashes} from "../Util/Hashes.sol";
 import {ECDSA} from "../Util/ECDSA.sol";

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: None
-pragma solidity 0.8.0;
+pragma solidity 0.8.27;
 
 import {MAC} from "../GameAsset/MAC.sol";
 import {MagApe} from "../GameAsset/MagApe.sol";

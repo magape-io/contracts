@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: None
-pragma solidity 0.8.0;
+pragma solidity 0.8.27;
 
 contract test {
     function getByte() external pure returns(bytes32 byt) {
