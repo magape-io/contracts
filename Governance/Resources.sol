@@ -28,7 +28,6 @@ contract Resources is Hashes, ECDSA {
             let tmp := shl(0x06, adr)
             sstore(tmp, add(sload(tmp), amt))
 
-
             // require(MAC(TTF).transferForm(msg.sender, address(this), amt))
             mstore(0x80, TFM)
             mstore(0x84, caller())
