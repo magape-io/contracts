@@ -1,5 +1,5 @@
 // SPDX-License-Identifier:None
-pragma solidity 0.8.27;
+pragma solidity 0.8.28;
 
 import {Ownable} from "../Util/Ownable.sol";
 import {NotBan} from "../Util/NotBan.sol";

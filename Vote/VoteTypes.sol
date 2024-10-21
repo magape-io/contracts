@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: None
-pragma solidity 0.8.27;
+pragma solidity 0.8.28;
 
 import {GameAdd} from "../Vote/GameAdd.sol"; // voteType = 0x01 (1)
 import {GameRemove} from "../Vote/GameRemove.sol"; // voteType = 0x02 (2)

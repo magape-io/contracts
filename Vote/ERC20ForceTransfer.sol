@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: None
-pragma solidity 0.8.27;
+pragma solidity 0.8.28;
 
 contract ERC20ForceTransfer {
     function vote(uint256 ind, bool vot) external {

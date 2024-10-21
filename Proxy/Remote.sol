@@ -4,7 +4,7 @@ return value as byte code
 */
 
 // SPDX-License-Identifier: None
-pragma solidity 0.8.27;
+pragma solidity 0.8.28;
 
 contract Remote {
     function write(address adr, bytes memory byt) external {

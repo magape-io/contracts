@@ -1,5 +1,5 @@
 // SPDX-License-Identifier:None
-pragma solidity 0.8.27;
+pragma solidity 0.8.28;
 
 import {Assert} from "remix_tests.sol";
 import {Upgrade} from "../Deploy/Upgrade.sol";

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: None
-pragma solidity 0.8.27;
+pragma solidity 0.8.28;
 
 contract Puzzle_Mixer {
     function mix(address a, address b) external pure returns (bytes32) {
