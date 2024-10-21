@@ -2,10 +2,10 @@
 pragma solidity 0.8.28;
 
 import {Assert} from "remix_tests.sol";
-import {Upgrade} from "../Deploy/Upgrade.sol";
+import {Upgrade} from "../Proxy/Upgrade.sol";
 import {CrossChain} from "../CrossChain/CrossChain.sol";
-import {XAE} from "../GameAsset/XAE.sol";
-import {XAPE} from "../GameAsset/XAPE.sol";
+import {MAC} from "../GameAsset/MAC.sol";
+import {MagApe} from "../GameAsset/MagApe.sol";
 
 library Z {
     bytes32 public constant TTF =

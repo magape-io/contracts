@@ -5,16 +5,16 @@ import "../tests/lib_crosschain.sol";
 
 contract crosschain_test {
     CrossChain private crc;
-    XAE private ggc;
-    XAPE private itm;
+    MAC private ggc;
+    MagApe private itm;
     Upgrade private pxy;
     Upgrade private px2;
     Upgrade private px3;
     address private immutable TIS = address(this);
 
     function checkProxy() public {
-        ggc = XAE(address(px2 = new Upgrade(address(new XAE()))));
-        itm = XAPE(address(px3 = new Upgrade(address(new XAPE()))));
+        ggc = MAC(address(px2 = new Upgrade(address(new MAC()))));
+        itm = MagApe(address(px3 = new Upgrade(address(new MagApe()))));
         Assert.notEqual(
             address(
                 crc = CrossChain(

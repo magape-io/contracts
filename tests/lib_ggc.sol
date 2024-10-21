@@ -2,8 +2,8 @@
 pragma solidity 0.8.28;
 
 import {Assert} from "remix_tests.sol";
-import {Upgrade} from "../Deploy/Upgrade.sol";
-import {XAE} from "../GameAsset/XAE.sol";
+import {Upgrade} from "../Proxy/Upgrade.sol";
+import {MAC} from "../GameAsset/MAC.sol";
 
 library Z {
     bytes32 public constant OWO =

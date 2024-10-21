@@ -4,13 +4,13 @@ pragma solidity 0.8.28;
 import "../tests/lib_ggc.sol";
 
 contract ggc_test {
-    XAE private ggc;
+    MAC private ggc;
     Upgrade private pxy;
     address private immutable TIS = address(this);
 
     function checkProxy() public {
         Assert.notEqual(
-            address(ggc = XAE(address(pxy = new Upgrade(address(new XAE()))))),
+            address(ggc = MAC(address(pxy = new Upgrade(address(new MAC()))))),
             address(0),
             Z.E02
         );

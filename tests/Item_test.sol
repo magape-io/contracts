@@ -4,16 +4,16 @@ pragma solidity 0.8.28;
 import "../tests/lib_item.sol";
 
 contract item_test {
-    Item private itm;
-    GGC private ggc;
+    MagApe private itm;
+    MAC private ggc;
     Upgrade private pxy;
     Upgrade private px2;
     address immutable TIS = address(this);
 
     function checkProxy() public {
-        ggc = GGC(address(px2 = new Upgrade(address(new GGC()))));
+        ggc = MAC(address(px2 = new Upgrade(address(new MAC()))));
         Assert.notEqual(
-            address(itm = Item(address(pxy = new Upgrade(address(new Item()))))),
+            address(itm = MagApe(address(pxy = new Upgrade(address(new MagApe()))))),
             address(0),
             Z.E02
         );
