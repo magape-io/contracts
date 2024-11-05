@@ -2,10 +2,10 @@
 pragma solidity 0.8.28;
 
 import {Assert} from "remix_tests.sol";
-import {Upgrade} from "../Deploy/Upgrade.sol";
+import {Upgrade} from "../Proxy/Upgrade.sol";
 import {Market} from "../Market/Market.sol";
-import {XAPE} from "../GameAsset/XAPE.sol";
-import {XAE} from "../GameAsset/XAE.sol";
+import {MagApe} from "../GameAsset/MagApe.sol";
+import {MAC} from "../GameAsset/MAC.sol";
 
 library Z {
     address public constant AC7 = 0x03C6FcED478cBbC9a4FAB34eF9f40767739D1Ff7;

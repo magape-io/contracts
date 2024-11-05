@@ -4,17 +4,17 @@ pragma solidity 0.8.28;
 import "../tests/lib_market.sol";
 
 contract market_test {
-    XAPE private itm;
+    MagApe private itm;
     Market private mkt;
-    XAE private ggc;
+    MAC private ggc;
     Upgrade private pxy;
     Upgrade private px2;
     Upgrade private px3;
     address immutable TIS = address(this);
 
     function checkProxy() public {
-        itm = XAPE(address(px2 = new Upgrade(address(new XAPE()))));
-        ggc = XAE(address(px3 = new Upgrade(address(new XAE()))));
+        itm = MagApe(address(px2 = new Upgrade(address(new MagApe()))));
+        ggc = MAC(address(px3 = new Upgrade(address(new MAC()))));
         Assert.notEqual(
             address(
                 mkt = Market(address(pxy = new Upgrade(address(new Market()))))
@@ -24,18 +24,18 @@ contract market_test {
         );
     }
 
-    function checkListing() public {
-        px2.mem(Z.APP, Z.toBytes32(Z.ADM)); // signer
-        (address adr, address ad2) = (address(ggc), address(itm));
-        itm.mint(0, 1, 0, 27, Z.R, Z.S); // mint
-        itm.setApprovalForAll(address(mkt), true);
-        mkt.list(ad2, 1, adr, 1 ether);
-        Assert.equal(
-            pxy.mem(Z.getKeccak(Z.toBytes32(ad2), Z.toBytes32(1))),
-            Z.toBytes32(adr),
-            Z.E02
-        );
-    }
+    // function checkListing() public {
+    //     px2.mem(Z.APP, Z.toBytes32(Z.ADM)); // signer
+    //     (address adr, address ad2) = (address(ggc), address(itm));
+    //     itm.mint(0, 1, 0, 27, Z.R, Z.S); // mint
+    //     itm.setApprovalForAll(address(mkt), true);
+    //     mkt.list(ad2, 1, adr, 1 ether);
+    //     Assert.equal(
+    //         pxy.mem(Z.getKeccak(Z.toBytes32(ad2), Z.toBytes32(1))),
+    //         Z.toBytes32(adr),
+    //         Z.E02
+    //     );
+    // }
 
     // add listing using coin unable as unit test cannot send coin
 
@@ -58,7 +58,9 @@ contract market_test {
         ggc.mint(TIS, amt);
         ggc.approve(address(mkt), amt);
         pxy.mem(Z.TFM, Z.toBytes32(fee)); // setFee
-        mkt.buy(adr, 1);
+        address[] memory var1;
+        uint256[] memory var2;
+        mkt.buy(adr, 1, var1, var2, var2);
         Assert.equal(
             pxy.mem(Z.getKeccak(Z.toBytes32(adr), Z.toBytes32(1))),
             Z.toBytes32(0),

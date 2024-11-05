@@ -41,14 +41,14 @@ contract item_test {
     }
 
     function checkMint() public {
-        itm.mint(0, 1, 27, Z.R, Z.S);
+        itm.mint(0, 1, 0, 27, Z.R, Z.S);
         Assert.equal(itm.balanceOf(TIS), 1, Z.E11);
         Assert.equal(itm.ownerOf(1), TIS, Z.E12);
     }
 
     function checkMint10() public {
         Z.resetCounter(pxy);
-        itm.mint(0, 10, 27, Z.R, Z.S);
+        itm.mint(0, 10, 0, 27, Z.R, Z.S);
         Assert.equal(itm.balanceOf(TIS), 11, Z.E14);
         Assert.equal(itm.ownerOf(11), TIS, Z.E15);
     }
@@ -89,13 +89,13 @@ contract item_test {
         Z.resetCounter(pxy);
         uint256[] memory ids = new uint256[](2);
         (ids[0], ids[1]) = (5, 6);
-        itm.merge(ids, 0, 27, Z.R, Z.S);
+        itm.merge(ids, 0, 0, 27, Z.R, Z.S);
         Assert.equal(itm.balanceOf(TIS), 5, Z.E28);
     }
 
     function checkUpgrade() public {
         Z.resetCounter(pxy);
-        itm.upgrade(0, 11, 27, Z.R, Z.S);
+        itm.upgrade(0, 11, 0, 27, Z.R, Z.S);
         Assert.notEqual(itm.balanceOf(TIS), 0, Z.E30);
     }
 
