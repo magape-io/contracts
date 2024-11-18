@@ -1,7 +1,7 @@
 // SPDX-License-Identifier:None
 pragma solidity 0.8.28;
 
-import {Hashes} from "./Hashes.sol";
+import {Hashes} from "../Util/Hashes.sol";
 
 contract USDTMock is Hashes {
     event Transfer(address indexed, address indexed, uint256);
