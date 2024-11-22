@@ -23,13 +23,10 @@ contract Upgrade is Ownable {
             )
             let sze := returndatasize()
             returndatacopy(0x00, 0x00, sze)
-            switch res
-            case 0 {
+            if iszero(res) {
                 revert(0x00, sze)
             }
-            default {
-                return(0x00, sze)
-            }
+            return(0x00, sze)
         }
     }
 
@@ -46,13 +43,10 @@ contract Upgrade is Ownable {
             )
             let sze := returndatasize()
             returndatacopy(0x00, 0x00, sze)
-            switch res
-            case 0 {
+            if iszero(res) {
                 revert(0x00, sze)
             }
-            default {
-                return(0x00, sze)
-            }
+            return(0x00, sze)
         }
     }
 
