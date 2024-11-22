@@ -68,13 +68,19 @@ contract Upgrade is Ownable {
         }
     }
 
-    function mem(bytes32[] calldata byt, bytes32[] calldata val)
+    function mem(bytes32[] memory byt, bytes32[] memory val)
         external
         onlyOwner
     {
-        unchecked {
-            uint256 len = byt.length;
-            for (uint256 i; i < len; ++i) mem(byt[i], val[i]);
+        assembly {
+            let len := add(mul(mload(byt), 0x20), 0x20)
+            for {
+                let i := 0x20
+            } lt(i, len) {
+                i := add(i, 0x20)
+            } {
+                sstore(mload(add(byt, i)), mload(add(val, i)))
+            }
         }
     }
 }
