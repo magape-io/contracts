@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: None
 pragma solidity 0.8.28;
-pragma abicoder v1;
 
 /*
 A database to store the CID that could have been reused and
