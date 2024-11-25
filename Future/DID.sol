@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: None
 pragma solidity 0.8.28;
-pragma abicoder v1;
 
 contract DIDFunctions {
     bytes32 private constant STO =
@@ -31,7 +30,7 @@ contract DIDFunctions {
         _;
     }
 
-    constructor(address sto) {
+    constructor(address sto) payable {
         // iDID = DID(did);
         assembly {
             sstore(STO, sto)

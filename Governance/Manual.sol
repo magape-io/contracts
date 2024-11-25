@@ -4,6 +4,8 @@ pragma solidity 0.8.28;
 import {Ownable} from "../Util/Ownable.sol";
 
 contract Manual is Ownable {
+    constructor() payable {}
+    
     function mem(
         address adr,
         bytes32 byt,

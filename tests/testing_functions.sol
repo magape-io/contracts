@@ -2,6 +2,8 @@
 pragma solidity 0.8.28;
 
 contract test {
+    constructor() payable {}
+    
     function getByte() external pure returns(bytes32 byt) {
         assembly {
             byt := sub(0x00000007616d7420657272000000000000000000000000000000000000000000, 0x01)

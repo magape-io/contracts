@@ -34,6 +34,8 @@ contract NotBan is Hashes {
         _;
     }
 
+    constructor() payable {}
+
     function notBan2(address adr, address ad2) internal view {
         assembly {
             // require(!suspended[address(this)] && !suspended[msg.sender]

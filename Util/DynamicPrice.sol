@@ -4,6 +4,8 @@ pragma solidity 0.8.28;
 import {Ownable} from "../Util/Ownable.sol";
 
 contract DynamicPrice is Ownable {
+    constructor() payable {}
+    
     function _pay(
         bytes32 lst,
         address toa,

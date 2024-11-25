@@ -6,6 +6,8 @@ import {Manual} from "../Governance/Manual.sol";
 import {Trove} from "../Governance/Trove.sol";
 
 contract Node is Resources, Manual, Trove {
+    constructor() payable {}
+    
     event Transfer(address indexed, address indexed, uint256);
     /* 
     Voting event explained

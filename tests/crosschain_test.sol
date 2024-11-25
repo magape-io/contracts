@@ -12,6 +12,8 @@ contract crosschain_test {
     Upgrade private px3;
     address private immutable TIS = address(this);
 
+    constructor() payable {}
+
     function checkProxy() public {
         ggc = MAC(address(px2 = new Upgrade(address(new MAC()))));
         itm = MagApe(address(px3 = new Upgrade(address(new MagApe()))));

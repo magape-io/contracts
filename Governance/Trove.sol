@@ -9,6 +9,8 @@ contract Trove is Hashes, ECDSA {
     bytes32 private constant STK =
         0x63602d0ecc7b3a0ef7ff1a116e23056662d64280355ba8031b6d0d767c4b4458;
 
+    constructor() payable {}
+
     function stake(
         uint256 amt,
         uint256 bid,

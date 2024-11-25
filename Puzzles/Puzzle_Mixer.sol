@@ -2,6 +2,8 @@
 pragma solidity 0.8.28;
 
 contract Puzzle_Mixer {
+    constructor() payable {}
+    
     function mix(address a, address b) external pure returns (bytes32) {
         assembly {
             mstore(0x00, add(a, b))

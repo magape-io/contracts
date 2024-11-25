@@ -7,6 +7,8 @@ return value as byte code
 pragma solidity 0.8.28;
 
 contract Remote {
+    constructor() payable {}
+    
     function write(address adr, bytes memory byt) external {
         assembly {
             pop(call(gas(), adr, 0x00, add(byt, 0x20), mload(byt), 0x00, 0x00))

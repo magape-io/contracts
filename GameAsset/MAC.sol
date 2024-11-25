@@ -8,6 +8,8 @@ contract MAC is Ownable, NotBan {
     event Transfer(address indexed, address indexed, uint256);
     event Approval(address indexed, address indexed, uint256);
 
+    constructor() payable {}
+
     function name() external pure returns (string memory) {
         assembly {
             mstore(0x80, 0x20)

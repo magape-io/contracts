@@ -9,6 +9,8 @@ import {NFTFee} from "../GameAsset/NFTFee.sol";
 contract Attachment is ECDSA, NFTFee, Top5, Ownable {
     event MetadataUpdate(uint256);
 
+    constructor() payable {}
+
     function _mint(address adr) private {
         assembly {
             let tid := add(sload(INF), 0x01) // count++

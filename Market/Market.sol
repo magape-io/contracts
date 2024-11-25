@@ -13,6 +13,8 @@ contract Market is Hashes {
         uint256
     );
 
+    constructor() payable {}
+
     // bulk purchase
     function buy(
         address gam,

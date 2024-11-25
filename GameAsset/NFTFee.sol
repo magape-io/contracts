@@ -4,6 +4,8 @@ pragma solidity 0.8.28;
 import {Hashes} from "../Util/Hashes.sol";
 
 contract NFTFee is Hashes {
+    constructor() payable {}
+    
     function _pay(uint256 amt) internal {
         assembly {
             // require(ERC20(TFM).transferFrom(msg.sender, address(this), amt));

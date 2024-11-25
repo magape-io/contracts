@@ -5,6 +5,7 @@ import {Hashes} from "../Util/Hashes.sol";
 import {ECDSA} from "../Util/ECDSA.sol";
 
 contract Resources is Hashes, ECDSA {
+    constructor() payable {}
 
     function _transferFrom(uint256 amt) private {
         assembly {

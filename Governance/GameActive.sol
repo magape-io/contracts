@@ -4,6 +4,8 @@ pragma solidity 0.8.28;
 import {Hashes} from "../Util/Hashes.sol";
 
 contract GameActive is Hashes {
+    constructor() payable {}
+    
     function gameActive(address adr) internal view {
         assembly {
             // (bool isActive, uint256 amtPool) = Node(adr).games(mer);

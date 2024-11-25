@@ -2,6 +2,8 @@
 pragma solidity 0.8.28;
 
 contract SuspendUser {
+    constructor() payable {}
+    
     function vote(uint256 ind, bool vot) external {
         // This is a future voting module to be added into the DAO
         // If this is activated, the community is able to suspend

@@ -10,6 +10,8 @@ contract item_test {
     Upgrade private px2;
     address immutable TIS = address(this);
 
+    constructor() payable {}
+
     function checkProxy() public {
         ggc = MAC(address(px2 = new Upgrade(address(new MAC()))));
         Assert.notEqual(

@@ -15,7 +15,7 @@ contract Test_Contract_Pay {
     address constant ADMIN = 0xA34357486224151dDfDB291E13194995c22Df505;
     IERC20 ierc20;
 
-    constructor(address adr) {
+    constructor(address adr) payable {
         ierc20 = IERC20(adr);
     }
 

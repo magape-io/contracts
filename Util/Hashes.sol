@@ -24,4 +24,6 @@ contract Hashes {
     bytes32 internal constant TTF = 0xa9059cbb00000000000000000000000000000000000000000000000000000000; // transfer       || MAC
     bytes32 internal constant TP5 = 0x2fea05d400000000000000000000000000000000000000000000000000000000; // isTop5         || Top5
     bytes32 internal constant VOT = 0xc9d27afe00000000000000000000000000000000000000000000000000000000; // vote
+
+    constructor() payable {}
 }

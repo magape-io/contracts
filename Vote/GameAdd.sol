@@ -4,6 +4,8 @@ pragma solidity 0.8.28;
 import {Hashes} from "../Util/Hashes.sol";
 
 contract GameAdd is Hashes {
+    constructor() payable {}
+    
     function vote(uint256 ind, bool vot) external {
         assembly {
             // emit Vote(cnt, vot+=4);

@@ -12,6 +12,8 @@ contract market_test {
     Upgrade private px3;
     address immutable TIS = address(this);
 
+    constructor() payable {}
+
     function checkProxy() public {
         itm = MagApe(address(px2 = new Upgrade(address(new MagApe()))));
         ggc = MAC(address(px3 = new Upgrade(address(new MAC()))));

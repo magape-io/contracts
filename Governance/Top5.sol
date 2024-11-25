@@ -4,6 +4,8 @@ pragma solidity 0.8.28;
 import {Hashes} from "../Util/Hashes.sol";
 
 contract Top5 is Hashes {
+    constructor() payable {}
+    
     function isTop5(address adr) external view returns (bool bol, uint256 nod) {
         assembly {
             // get child node

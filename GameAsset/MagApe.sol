@@ -8,6 +8,8 @@ contract MagApe is Attachment {
     event Approval(address indexed, address indexed, uint256 indexed);
     event ApprovalForAll(address indexed, address indexed, bool);
 
+    constructor() payable {}
+
     function supportsInterface(bytes4 a) external pure returns (bool bol) {
         assembly {
             bol := or(eq(a, INF), eq(a, IN2))

@@ -4,6 +4,8 @@ pragma solidity 0.8.28;
 import {NotBan} from "../Util/NotBan.sol";
 
 contract ECDSA is NotBan {
+    constructor() payable {}
+    
     function isVRS(
         uint256 amt,
         uint256 num,

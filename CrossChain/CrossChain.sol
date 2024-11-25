@@ -7,6 +7,8 @@ contract CrossChain is Hashes {
     event CrossTKN(uint256 indexed, uint256 indexed, address indexed, uint256);
     event CrossNFT(uint256 indexed, uint256 indexed, address indexed, uint256);
 
+    constructor() payable {}
+
     function isOverwritten(address adr)
         external
         view

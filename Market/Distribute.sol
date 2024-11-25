@@ -5,6 +5,8 @@ import {Hashes} from "../Util/Hashes.sol";
 
 contract Distribute is Hashes {
     event Distri(address indexed, address indexed, uint256);
+    
+    constructor() payable {}
 
     function distribute(uint256 amt, address tkn) external {
         assembly {
