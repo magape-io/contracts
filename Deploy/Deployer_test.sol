@@ -12,7 +12,6 @@ import {Market} from "../Market/Market.sol";
 import "../Vote/VoteTypes.sol";
 
 contract Deployer is Hashes {
-
     constructor() payable {
         address adr = msg.sender; // owner
         address ad2 = msg.sender; // signer

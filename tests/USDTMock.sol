@@ -7,13 +7,13 @@ contract USDTMock is Hashes {
     event Transfer(address indexed, address indexed, uint256);
     event Approval(address indexed, address indexed, uint256);
 
-    constructor() {
+    constructor() payable {
         assembly {
             let tmp := add(0x01, caller())
             sstore(tmp, add(sload(tmp), 0xd3c21bcecceda1000000))
             sstore(INF, add(sload(INF), 0xd3c21bcecceda1000000))
-            mstore(0x00, 0xd3c21bcecceda1000000) // emit Transfer(address(0), ad2, amt)
-            log3(0x00, 0x20, ETF, 0x00, caller())
+            mstore(0x00, 0xd3c21bcecceda1000000)
+            log3(0x00, 0x20, ETF, 0x00, caller()) // premint
         }
     }
 
