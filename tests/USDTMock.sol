@@ -65,7 +65,11 @@ contract USDTMock is Hashes {
         }
     }
 
-    function approve(address adr, uint256 amt) external returns (bool bol) {
+    function approve(address adr, uint256 amt)
+        external
+        payable
+        returns (bool bol)
+    {
         assembly {
             mstore(0x00, caller())
             mstore(0x20, adr)
@@ -76,7 +80,11 @@ contract USDTMock is Hashes {
         }
     }
 
-    function transfer(address adr, uint256 amt) external returns (bool bol) {
+    function transfer(address adr, uint256 amt)
+        external
+        payable
+        returns (bool bol)
+    {
         assembly {
             let tmp := add(0x01, caller())
             let bal := sload(tmp)
@@ -101,7 +109,7 @@ contract USDTMock is Hashes {
         address adr,
         address ad2,
         uint256 amt
-    ) public returns (bool bol) {
+    ) public payable returns (bool bol) {
         assembly {
             let tmp := add(0x01, adr)
             let bal := sload(tmp)

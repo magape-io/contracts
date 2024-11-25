@@ -7,7 +7,7 @@ import {Trove} from "../Governance/Trove.sol";
 
 contract Node is Resources, Manual, Trove {
     constructor() payable {}
-    
+
     event Transfer(address indexed, address indexed, uint256);
     /* 
     Voting event explained
@@ -62,7 +62,7 @@ contract Node is Resources, Manual, Trove {
         }
     }
 
-    function cancelVote(uint256 cnt) external {
+    function cancelVote(uint256 cnt) external payable {
         assembly {
             mstore(0x00, cnt)
             let ptr := keccak256(0x00, 0x20)
@@ -83,7 +83,11 @@ contract Node is Resources, Manual, Trove {
         }
     }
 
-    function createVote(address adr, uint256 stt) external returns (uint256 cnt) {
+    function createVote(address adr, uint256 stt)
+        external
+        payable
+        returns (uint256 cnt)
+    {
         assembly {
             // (bool, uint256 nod) = MagApe(TP5).isTop5(msg.sender);
             mstore(0x00, TP5)
@@ -118,7 +122,7 @@ contract Node is Resources, Manual, Trove {
         }
     }
 
-    function vote(uint256 ind, bool vot) external {
+    function vote(uint256 ind, bool vot) external payable {
         assembly {
             mstore(0x80, VOT)
             mstore(0x84, ind)
@@ -135,7 +139,10 @@ contract Node is Resources, Manual, Trove {
             }
 
             // require(Vote(adr).vote(ind, vot) && adr != address(0));
-            if or(iszero(delegatecall(gas(), adr, 0x80, 0x44, 0x00, 0x00)), iszero(adr)) {
+            if or(
+                iszero(delegatecall(gas(), adr, 0x80, 0x44, 0x00, 0x00)),
+                iszero(adr)
+            ) {
                 mstore(0x80, ERR)
                 mstore(0xa0, STR)
                 mstore(0xc0, ER1)

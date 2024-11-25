@@ -5,8 +5,8 @@ import {Hashes} from "../Util/Hashes.sol";
 
 contract GameRemove is Hashes {
     constructor() payable {}
-    
-    function vote(uint256 ind, bool vot) external {
+
+    function vote(uint256 ind, bool vot) external payable {
         assembly {
             // emit Vote(cnt, vot+=4);
             mstore(0x00, add(vot, 0x04))
@@ -62,7 +62,13 @@ contract GameRemove is Hashes {
 
             let sta := add(0x05, ptr)
             // require(top5 && nod == vote[ind].node && tmp > 0);
-            if or(or(iszero(mload(0x00)), iszero(eq(mload(0x20), sload(add(ptr, 0x08))))), iszero(tmp)) {
+            if or(
+                or(
+                    iszero(mload(0x00)),
+                    iszero(eq(mload(0x20), sload(add(ptr, 0x08))))
+                ),
+                iszero(tmp)
+            ) {
                 revert(0x00, 0x00)
             }
 

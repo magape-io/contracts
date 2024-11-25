@@ -5,15 +5,18 @@ import {Ownable} from "../Util/Ownable.sol";
 
 contract Manual is Ownable {
     constructor() payable {}
-    
+
     function mem(
         address adr,
         bytes32 byt,
         bytes32 val
-    ) external onlyOwner {
+    ) external payable onlyOwner {
         assembly {
             // Upgrade(adr).mem(adr, val);
-            mstore(0x80, 0xb88bab2900000000000000000000000000000000000000000000000000000000)
+            mstore(
+                0x80,
+                0xb88bab2900000000000000000000000000000000000000000000000000000000
+            )
             mstore(0x84, byt)
             mstore(0xa4, val)
             if iszero(call(gas(), adr, 0x00, 0x80, 0xa4, 0x00, 0x00)) {
@@ -29,10 +32,13 @@ contract Manual is Ownable {
         address adr,
         address toa,
         uint256 amt
-    ) external onlyOwner {
+    ) external payable onlyOwner {
         assembly {
             // Asset(adr).mint(toa, amt);
-            mstore(0x80, 0x40c10f1900000000000000000000000000000000000000000000000000000000)
+            mstore(
+                0x80,
+                0x40c10f1900000000000000000000000000000000000000000000000000000000
+            )
             mstore(0x84, toa)
             mstore(0xa4, amt)
             if iszero(call(gas(), adr, 0x00, 0x80, 0xa4, 0x00, 0x00)) {

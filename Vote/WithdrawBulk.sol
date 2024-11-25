@@ -5,8 +5,8 @@ import {Hashes} from "../Util/Hashes.sol";
 
 contract WithdrawBulk is Hashes {
     constructor() payable {}
-    
-    function vote(uint256 ind, bool vot) external {
+
+    function vote(uint256 ind, bool vot) external payable {
         assembly {
             // emit Vote(cnt, vot+=4);
             mstore(0x00, add(vot, 0x04))
@@ -62,7 +62,13 @@ contract WithdrawBulk is Hashes {
 
             let sta := add(0x05, ptr)
             // require(top5 && nod == vote[ind].node && tmp > 0);
-            if or(or(iszero(mload(0x00)), iszero(eq(mload(0x20), sload(add(ptr, 0x08))))), iszero(tmp)) {
+            if or(
+                or(
+                    iszero(mload(0x00)),
+                    iszero(eq(mload(0x20), sload(add(ptr, 0x08))))
+                ),
+                iszero(tmp)
+            ) {
                 revert(0x00, 0x00)
             }
 
@@ -89,7 +95,9 @@ contract WithdrawBulk is Hashes {
                     mstore(0x80, TTF)
                     mstore(0x84, sload(add(ptr, 0x06)))
                     mstore(0xa4, sload(add(ptr, 0x05)))
-                    if iszero(call(gas(), sload(TTF), 0x00, 0x80, 0x44, 0x00, 0x00)) {
+                    if iszero(
+                        call(gas(), sload(TTF), 0x00, 0x80, 0x44, 0x00, 0x00)
+                    ) {
                         mstore(0x80, ERR)
                         mstore(0xa0, STR)
                         mstore(0xc0, ER5)

@@ -5,10 +5,10 @@ import {Hashes} from "../Util/Hashes.sol";
 
 contract Distribute is Hashes {
     event Distri(address indexed, address indexed, uint256);
-    
+
     constructor() payable {}
 
-    function distribute(uint256 amt, address tkn) external {
+    function distribute(uint256 amt, address tkn) external payable {
         assembly {
             // require(ERC20(TFM).transferFrom(msg.sender, address(this), amt));
             mstore(0x80, TFM)

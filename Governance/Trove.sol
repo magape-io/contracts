@@ -17,7 +17,7 @@ contract Trove is Hashes, ECDSA {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external {
+    ) external payable {
         isVRS(amt, 0x00, bid, v, r, s);
 
         assembly {
@@ -31,7 +31,7 @@ contract Trove is Hashes, ECDSA {
         }
     }
 
-    function stake(uint256 amt, uint256 bid) external {
+    function stake(uint256 amt, uint256 bid) external payable {
         assembly {
             // stake[adr].amt += amt;
             let tmp := shl(0x07, caller())
@@ -55,7 +55,7 @@ contract Trove is Hashes, ECDSA {
         }
     }
 
-    function stake(uint256 amt) external {
+    function stake(uint256 amt) external payable {
         assembly {
             // require(MAC(TTF).transfer(toa, amt))
             mstore(0x80, TTF)

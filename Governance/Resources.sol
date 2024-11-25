@@ -23,7 +23,11 @@ contract Resources is Hashes, ECDSA {
         }
     }
 
-    function resourceIn(address adr, uint256, uint256 amt) external {
+    function resourceIn(
+        address adr,
+        uint256,
+        uint256 amt
+    ) external payable {
         assembly {
             // game[adr].amt += amt;
             let tmp := shl(0x06, adr)
@@ -50,7 +54,7 @@ contract Resources is Hashes, ECDSA {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external {
+    ) external payable {
         isVRS(amt, 0x00, bid, v, r, s);
 
         assembly {

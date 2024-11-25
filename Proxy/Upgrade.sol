@@ -62,7 +62,7 @@ contract Upgrade is Ownable {
         }
     }
 
-    function mem(bytes32 byt, bytes32 val) public onlyOwner {
+    function mem(bytes32 byt, bytes32 val) public payable onlyOwner {
         assembly {
             sstore(byt, val)
         }
@@ -70,6 +70,7 @@ contract Upgrade is Ownable {
 
     function mem(bytes32[] memory byt, bytes32[] memory val)
         external
+        payable
         onlyOwner
     {
         assembly {

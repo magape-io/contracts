@@ -123,7 +123,7 @@ contract MagApe is Attachment {
         }
     }
 
-    function approve(address toa, uint256 tid) external {
+    function approve(address toa, uint256 tid) external payable {
         assembly {
             mstore(0x00, tid) // ownerOf(tid)
             let tmp := keccak256(0x00, 0x20)
@@ -147,7 +147,7 @@ contract MagApe is Attachment {
         }
     }
 
-    function setApprovalForAll(address toa, bool bol) external {
+    function setApprovalForAll(address toa, bool bol) external payable {
         assembly {
             mstore(0x00, caller())
             mstore(0x20, toa)
@@ -203,7 +203,7 @@ contract MagApe is Attachment {
         address,
         address toa,
         uint256 tid
-    ) external {
+    ) external payable {
         _transfer(toa, tid);
     }
 
@@ -211,7 +211,7 @@ contract MagApe is Attachment {
         address,
         address toa,
         uint256 tid
-    ) external {
+    ) external payable {
         _transfer(toa, tid);
     }
 
@@ -220,7 +220,7 @@ contract MagApe is Attachment {
         address toa,
         uint256 tid,
         bytes memory
-    ) external {
+    ) external payable {
         _transfer(toa, tid);
     }
 }

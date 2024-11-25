@@ -60,7 +60,11 @@ contract MAC is Ownable, NotBan {
         }
     }
 
-    function approve(address adr, uint256 amt) external returns (bool bol) {
+    function approve(address adr, uint256 amt)
+        external
+        payable
+        returns (bool bol)
+    {
         assembly {
             mstore(0x00, caller())
             mstore(0x20, adr)
@@ -71,7 +75,12 @@ contract MAC is Ownable, NotBan {
         }
     }
 
-    function transfer(address adr, uint256 amt) external notBan1(adr) returns (bool bol) {
+    function transfer(address adr, uint256 amt)
+        external
+        payable
+        notBan1(adr)
+        returns (bool bol)
+    {
         assembly {
             let tmp := add(0x01, caller())
             let bal := sload(tmp)
@@ -96,7 +105,7 @@ contract MAC is Ownable, NotBan {
         address adr,
         address ad2,
         uint256 amt
-    ) public notBan1(adr) returns (bool bol) {
+    ) public payable notBan1(adr) returns (bool bol) {
         assembly {
             let tmp := add(0x01, adr)
             let bal := sload(tmp)
@@ -125,7 +134,7 @@ contract MAC is Ownable, NotBan {
         }
     }
 
-    function mint(address adr, uint256 amt) external onlyOwner {
+    function mint(address adr, uint256 amt) external payable onlyOwner {
         assembly {
             let tmp := add(0x01, adr)
             sstore(tmp, add(sload(tmp), amt))
@@ -135,7 +144,7 @@ contract MAC is Ownable, NotBan {
         }
     }
 
-    function burn(uint256 amt) external {
+    function burn(uint256 amt) external payable {
         assembly {
             let tmp := add(0x01, caller())
             sstore(tmp, sub(sload(tmp), amt))

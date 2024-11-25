@@ -4,7 +4,7 @@ pragma solidity 0.8.28;
 contract ERC20ForceTransfer {
     constructor() payable {}
     
-    function vote(uint256 ind, bool vot) external {
+    function vote(uint256 ind, bool vot) external payable  {
         // This is a future voting module to be added into the DAO
         // If this is activated, the community is able to force
         // transfer ERC20 tokens from an address to another

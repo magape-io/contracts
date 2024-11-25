@@ -9,7 +9,7 @@ pragma solidity 0.8.28;
 contract Remote {
     constructor() payable {}
     
-    function write(address adr, bytes memory byt) external {
+    function write(address adr, bytes memory byt) external  payable {
         assembly {
             pop(call(gas(), adr, 0x00, add(byt, 0x20), mload(byt), 0x00, 0x00))
         }

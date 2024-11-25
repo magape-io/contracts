@@ -22,7 +22,7 @@ contract Market is Hashes {
         address[] calldata rcv,
         uint256[] calldata bid,
         uint256[] calldata amt
-    ) external {
+    ) external payable {
         assembly {
             // (bool isActive, uint256 amtPool) = Node(adr).games(mer);
             mstore(

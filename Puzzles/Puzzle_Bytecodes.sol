@@ -15,7 +15,7 @@ contract Puzzle_Creator {
 
     constructor() payable {}
 
-    function nextHint(address adr) external {
+    function nextHint(address adr) external payable {
         assembly {
             // Only MagApe NFT holder are able to participate
             // require(MAC(NFT).balanceOf(msg.sender) > 0, "No NFT");

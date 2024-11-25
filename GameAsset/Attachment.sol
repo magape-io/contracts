@@ -45,7 +45,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external {
+    ) external payable {
         unchecked {
             for (uint256 i; i < len; ++i) _mint(msg.sender);
         }
@@ -62,7 +62,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external {
+    ) external payable {
         unchecked {
             for (uint256 i; i < len; ++i) _mint(msg.sender);
         }
@@ -72,7 +72,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
     }
 
     // admin minting
-    function mint(address adr, uint256 amt) external onlyOwner {
+    function mint(address adr, uint256 amt) external payable onlyOwner {
         unchecked {
             for (uint256 i; i < amt; ++i) _mint(adr);
         }
@@ -80,7 +80,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
     }
 
     // destory of tokens (no reward)
-    function burn(uint256 tid) public notBan0 {
+    function burn(uint256 tid) public payable notBan0 {
         assembly {
             // ownerOf(tid)
             mstore(0x00, tid)
@@ -114,7 +114,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external {
+    ) external payable {
         _transfer(amt);
         unchecked {
             for (uint256 i; i < ids.length; ++i) burn(ids[i]);
@@ -130,7 +130,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external {
+    ) external payable {
         uint256 num;
         unchecked {
             for (uint256 i; i < ids.length; ++i) {
@@ -151,7 +151,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external {
+    ) external payable {
         assembly {
             // emit MetadataUpdate(tid)
             mstore(0x00, tid)
