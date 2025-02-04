@@ -8,7 +8,6 @@ import {NFTFee} from "../GameAsset/NFTFee.sol";
 
 contract Attachment is ECDSA, NFTFee, Top5, Ownable {
     event MetadataUpdate(uint256);
-    event Burn(address indexed, address indexed, uint256 indexed, uint256);
 
     constructor() payable {}
 
@@ -104,34 +103,6 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
             sstore(tmp, sub(sload(tmp), 0x01))
 
             log4(0x00, 0x00, ETF, frm, 0x00, tid) // emit Transfer()
-        }
-    }
-
-    // destory of tokens (no reward)
-    function burn(uint256 tid, uint bid) public payable notBan0 {
-        assembly {
-            // ownerOf(tid)
-            mstore(0x00, tid)
-            let ptr := keccak256(0x00, 0x20)
-            let frm := sload(ptr)
-
-            // require(ownerOf(tid) == msg.sender)
-            if iszero(eq(frm, caller())) {
-                mstore(0x80, ERR)
-                mstore(0xa0, STR)
-                mstore(0xc0, ER2)
-                revert(0x80, 0x64)
-            }
-
-            sstore(ptr, 0x00) // ownerOf[id] = toa
-            sstore(add(ptr, 0x01), 0x00) // approve[tid] = toa
-
-            mstore(0x00, frm) // --balanceOf(msg.sender)
-            let tmp := keccak256(0x00, 0x20)
-            sstore(tmp, sub(sload(tmp), 0x01))
-
-            mstore(0x00, bid)
-            log4(0x00, 0x20, 0x5d624aa9c148153ab3446c1b154f660ee7701e549fe9b62dab7171b1c80e6fa2, caller(), 0x00, tid) // emit Transfer()
         }
     }
 

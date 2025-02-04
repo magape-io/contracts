@@ -7,6 +7,7 @@ import {NotBan} from "../Util/NotBan.sol";
 contract MAC is Ownable, NotBan {
     event Transfer(address indexed, address indexed, uint256);
     event Approval(address indexed, address indexed, uint256);
+    event Burn(address indexed, address indexed, uint256 indexed, uint256);
 
     constructor() payable {}
 
@@ -54,8 +55,6 @@ contract MAC is Ownable, NotBan {
 
     function balanceOf(address adr) external view returns (uint256 amt) {
         assembly {
-            // mstore(0x00, adr)
-            // amt := sload(keccak256(0x00, 0x20))
             amt := sload(add(0x01, adr))
         }
     }
@@ -144,13 +143,36 @@ contract MAC is Ownable, NotBan {
         }
     }
 
-    function burn(uint256 amt) external payable {
+    function burn(uint256 amt) public payable notBan0 {
         assembly {
             let tmp := add(0x01, caller())
-            sstore(tmp, sub(sload(tmp), amt))
+            let bal := sload(tmp)
+            if gt(amt, bal) {
+                // require(balanceOf(msg.sender) >= amt)
+                mstore(0x80, ERR)
+                mstore(0xa0, STR)
+                mstore(0xc0, ER5)
+                revert(0x80, 0x64)
+            }
+            sstore(tmp, sub(bal, amt))
             sstore(INF, sub(sload(INF), amt))
             mstore(0x00, amt) // emit Transfer(adr, address(0), amt)
             log3(0x00, 0x20, ETF, caller(), 0x00)
+        }
+    }
+
+    function burn(uint256 amt, uint256 bid) public payable notBan0 {
+        burn(amt);
+        assembly {
+            mstore(0x00, bid)
+            log4(
+                0x00,
+                0x20,
+                0x5d624aa9c148153ab3446c1b154f660ee7701e549fe9b62dab7171b1c80e6fa2,
+                caller(),
+                0x00,
+                amt
+            ) // emit Burn()
         }
     }
 }
