@@ -156,12 +156,12 @@ contract MAC is Ownable, NotBan {
             }
             sstore(tmp, sub(bal, amt))
             sstore(INF, sub(sload(INF), amt))
-            mstore(0x00, amt) // emit Transfer(adr, address(0), amt)
-            log3(0x00, 0x20, ETF, caller(), 0x00)
+            mstore(0x00, amt) 
+            log3(0x00, 0x20, ETF, caller(), 0x00) // emit Transfer(adr, address(0), amt)
         }
     }
 
-    function burn(uint256 amt, uint256 bid) public payable notBan0 {
+    function burn(uint256 amt, uint256 bid) external payable {
         burn(amt);
         assembly {
             mstore(0x00, bid)
@@ -172,7 +172,7 @@ contract MAC is Ownable, NotBan {
                 caller(),
                 0x00,
                 amt
-            ) // emit Burn()
+            ) // emit Burn(msg.sender, address(0), amt, bid)
         }
     }
 }
