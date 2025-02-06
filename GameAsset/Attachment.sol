@@ -49,7 +49,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         unchecked {
             for (uint256 i; i < len; ++i) _mint(msg.sender);
         }
-        if (amt > 0) _transfer(amt);
+        if (amt > 0x00) _transfer(amt);
         isVRS(amt, len, bid, v, r, s);
         _setTop5(msg.sender);
     }
@@ -66,7 +66,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
         unchecked {
             for (uint256 i; i < len; ++i) _mint(msg.sender);
         }
-        if (amt > 0) _pay(amt);
+        if (amt > 0x00) _pay(amt);
         isVRS(amt, len, bid, v, r, s);
         _setTop5(msg.sender);
     }
@@ -102,7 +102,7 @@ contract Attachment is ECDSA, NFTFee, Top5, Ownable {
             let tmp := keccak256(0x00, 0x20)
             sstore(tmp, sub(sload(tmp), 0x01))
 
-            log4(0x00, 0x00, ETF, frm, 0x00, tid) // emit Transfer()
+            log4(0x00, 0x00, ETF, frm, 0x00, tid) // emit Transfer(frm, address(0), tid)
         }
     }
 
