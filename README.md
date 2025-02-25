@@ -6,7 +6,7 @@
 | [BSC Mainnet](#bsc-mainnet) | [XDC Mainnet](#xdc-mainnet) | [BSC Testnet](#bsc-testnet) | [Sepolia Testnet](#sepolia-testnet) |
 | [Etherlink Testnet](#etherlink-testnet) | [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | 
 | [Klaytn Testnet](#klaytn-testnet) | [Hela Testnet ](#hela-testnet) | [Avalanche Testnet](#avalanche-testnet) | [Sonic Testnet](#sonic-testnet) |
-| [Base Testnet](#base-testnet) |  |  |  |
+| [Base Testnet](#base-testnet) | [World Chain Testnet](#world-chain-testnet) |  |  |
 
 
 ## [BSC Mainnet](https://bscscan.com/)
@@ -394,6 +394,36 @@
 **Marketplace** 
 ```
 0x135F67e44191ab6b3355134d8211Cd72C8926cfA
+```
+[Back to top](#deployed-magape-contracts)
+
+---
+
+## [World Chain Testnet](https://worldchain-sepolia.explorer.alchemy.com/)
+
+**MagApe**
+```
+0x5B5eBC739b59d69184AE895401690f13Fd68d818
+```
+**MAC**
+```
+0x2f75Bf420A799829D3C4060c1D25EAe8F940fC37
+```
+**Node** 
+```
+0xd73d9339b38c462cC41DB4548f67Dd6774326866
+```
+**Cross Chain** 
+```
+0xa56920B698261c4b78F9fE9F1C09DAc266521E15
+```
+**Arena**
+```
+0xFf2EFcD9E73b11c477f16719aE1Fd963c5F84F67
+```
+**Marketplace** 
+```
+0x34Db1a9F4d5422002d00911cbC91615A3EE6956B
 ```
 [Back to top](#deployed-magape-contracts)
 
