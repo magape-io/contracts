@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: None
-pragma solidity 0.8.28;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.29;
 
 import {Resources} from "../Governance/Resources.sol";
 import {Manual} from "../Governance/Manual.sol";

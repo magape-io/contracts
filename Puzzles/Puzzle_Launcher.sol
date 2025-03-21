@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: None
-pragma solidity 0.8.28;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.29;
 pragma abicoder v1;
 
 contract Puzzle_Launcher {

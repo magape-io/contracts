@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: None
-pragma solidity 0.8.28;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.29;
 
 library Random {
     function ran(uint256 max) public view returns (uint256 num) {

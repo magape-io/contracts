@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: None
-pragma solidity 0.8.28;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.29;
 
 contract Hashes {
     bytes32 internal constant ETF = 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef; // event Transfer
