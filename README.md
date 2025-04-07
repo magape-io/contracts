@@ -7,6 +7,7 @@
 | [Etherlink Testnet](#etherlink-testnet) | [Cardona Testnet](#cardona-testnet) | [Ancient8 Testnet](#ancient8-testnet) | [Mirai Testnet](#mirai-testnet) | 
 | [Klaytn Testnet](#klaytn-testnet) | [Hela Testnet ](#hela-testnet) | [Avalanche Testnet](#avalanche-testnet) | [Sonic Testnet](#sonic-testnet) |
 | [Base Testnet](#base-testnet) | [World Chain Testnet](#world-chain-testnet) | [Immutable Testnet](#immutable-testnet) | [Moonbase Alpha](#moonbase-alpha) |
+| [Gnosis Chiado](#gnosis-chiado) | | | |
 
 
 ## [BSC Mainnet](https://bscscan.com/)
@@ -460,6 +461,36 @@
 ---
 
 ## [Moonbase Alpha](https://moonbase.moonscan.io)
+
+**MagApe**
+```
+0x1dAFAf1b2afCe7CD8B985Ed7e98f491043efB542
+```
+**MAC**
+```
+0x281Ff91326C020206D8B472c4De657413a35829D
+```
+**Node** 
+```
+0x0AD61A3312aB48d24B714DB368d2F9AE03A39f31
+```
+**Cross Chain** 
+```
+0x352A40cc430d8d87fCbA44516a583e424567F9Dd
+```
+**Arena**
+```
+0x7117434126Fb57434d40124F5197f4E68811362e
+```
+**Marketplace** 
+```
+0x135F67e44191ab6b3355134d8211Cd72C8926cfA
+```
+[Back to top](#deployed-magape-contracts)
+
+---
+
+## [Gnosis Chiado](https://gnosis-chiado.blockscout.com/)
 
 **MagApe**
 ```
